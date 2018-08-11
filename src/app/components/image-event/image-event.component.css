@@ -1,0 +1,26 @@
+
+.event-image-header{
+
+    background: purple;
+    color: white;
+    width: 60%;
+    margin: 50px auto;
+    padding: 10px;
+    border-radius:10px;
+    font-weight: bold; 
+}
+
+.go-next-btn{
+    margin: 0 auto;
+}
+
+
+.file-input-image{
+    display: none;
+}
+
+
+img.event-image-carousel{
+    width: 300px;
+    height: auto;
+}

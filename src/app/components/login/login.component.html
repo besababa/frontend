@@ -1,0 +1,18 @@
+<form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+  <h2 class="form-signin-heading" >כניסה</h2>
+  <div *ngIf="invalidLogin" class="alert alert-danger">אימייל או סיסמה לא נכונים</div>
+  <label for="inputEmail" class="sr-only">אימייל</label>
+  <input type="email" id="inputEmail" name="email" ngModel class="form-control" autocomplete="email" placeholder="אימייל" required autofocus>
+  <label for="inputPassword" class="sr-only">סיסמא</label>
+  <input type="password" id="inputPassword" name="password" ngModel class="form-control" autocomplete="current-password" placeholder="סיסמא" required>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">כנס</button>
+
+  
+  <div class="col-sm-6 register-link-wrapper">
+    <a routerLink="/register">או הרשם</a> 
+  </div>
+  <div class="col-sm-6 reset-passward-wrapper">
+    <a routerLink="/reset-password">אפס סיסמא</a>
+  </div>
+  
+</form>

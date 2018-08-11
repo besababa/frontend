@@ -1,0 +1,24 @@
+
+
+<div class="row">
+     <page-title class="center" text="You can choose title or we can choose for you"></page-title>
+</div>
+
+<div class="row">
+    <mat-form-field class="center">
+        <input type="text" placeholder="{{placeholder}}" aria-label="Number" matInput [formControl]="titleControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let title of titles" [value]="title">
+            {{title}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
+
+<div class="row go-next-btn-wrapper">
+     <action-btn class="center" text="Go next" (change)="saveTitle($event)" ></action-btn>
+</div>   
+<div *ngIf="invalidEvent" class="error-msg">Server error</div>
+
+        
+

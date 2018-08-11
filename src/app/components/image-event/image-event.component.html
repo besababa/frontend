@@ -1,0 +1,31 @@
+
+
+<div class="row">
+    
+   <page-title class="center" text="You can choose image or we can choose for you"></page-title>
+</div>
+    
+
+<div class="row">
+  
+    <ngb-carousel class="center" #myCarousel="ngbCarousel" >
+
+        <ng-template class="center" ngbSlide *ngFor="let image of images; let itemId = index"  [id]="itemId">
+            <img class="event-image-carousel" [src]="image.url" alt="{{image.alt_image}}" (click)="fileInput.click()">  
+        </ng-template>
+        
+        
+        </ngb-carousel>
+        <input class="file-input-image" type="file" #fileInput (change)="uploadImage($event)">
+    
+    
+</div>
+   
+<div class="row">
+    <action-btn class="go-next-btn" text="Go next" (change)="saveImage($event)" ></action-btn>
+</div>
+  
+<div *ngIf="error" class="error-msg">{{error}}</div>
+
+        
+

@@ -1,0 +1,35 @@
+.go-next-btn{
+    background: purple;
+    color: white;
+  
+}
+.event-title-header{
+
+    background: purple;
+    color: white;
+    width: 60%;
+    margin: 50px auto;
+    padding: 10px;
+    border-radius:10px;
+    font-weight: bold; 
+}
+
+.go-next-btn-wrapper{
+    margin-top: 30px;
+}
+
+.error-msg{
+    color: red;
+    font-size: 14px;
+    text-align: center
+}
+
+
+.event-title-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  
+

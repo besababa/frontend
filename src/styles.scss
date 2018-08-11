@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+$action-btn-background: #f7b336;
+$action-btn-color: #434343;
+
+
+
+.action-btn{
+  background: $action-btn-background;
+  color: $action-btn-color;
+}
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+ }
+ 
+ body {
+   direction: ltr;
+    margin: 0;
+    
+ 
+ }
+
+ .error-msg{
+   color: red;
+   text-align: center;
+ }
+ .center{
+   margin: auto!important;
+ }
+  
+ .full-width {
+    width: 100%;
+ }
+ 
+ .text-center {
+    text-align: center;
+ }
+ 
+ .text-left {
+    text-align: left;
+ }
+ 
+ .text-right {
+    text-align: right;
+ }
+ 
+ .pull-left {
+    float: left;
+ }
+ 
+ .pull-right {
+    float: right;
+ }

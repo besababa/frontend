@@ -1,0 +1,18 @@
+<form class="form-register" #f="ngForm" (ngSubmit)="register(f.value)">
+  <h2 class="form-register-heading" >רישום</h2>
+  <div *ngIf="invalidLogin" class="alert alert-danger">אימייל זה כבר קיים במערכת נסה להתחבר שוב או לאפס סיסמא</div>
+
+  <label for="inputName" class="sr-only">שם מלא</label>
+  <input type="text" id="inputNamw" name="name" autocomplete="given-name" ngModel class="form-control" placeholder="שם מלא" required autofocus>
+
+  <label for="inputEmail" class="sr-only">אימייל</label>
+  <input type="email" id="inputEmail" name="email" autocomplete="email"  ngModel class="form-control" placeholder="אימייל" required autofocus>
+
+  <label for="inputPassword" class="sr-only">סיסמא</label>
+  <input type="password" id="inputPassword" name="password" autocomplete="current-password" ngModel class="form-control" placeholder="סיסמא" required>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">הרשם</button>
+  <div class="col-sm-12 reset-password-link-wrapper">
+    <a routerLink="/login">חזור לכניסה</a>
+  </div>
+</form>

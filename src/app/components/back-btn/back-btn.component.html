@@ -1,0 +1,11 @@
+<div class="back-btn-wrapper row">
+    <div 
+    *ngIf="auth.isLoggedIn()" 
+    routerLinkActive='active' 
+    class="back-btn header-back-btn pull-rigth" 
+    routerLink="{{RoutingState.getPreviousUrl()}}" 
+    (click)="RoutingState.deleteLast()"
+   >
+      <i class="fa fa-chevron-right"></i>
+    </div>
+</div>

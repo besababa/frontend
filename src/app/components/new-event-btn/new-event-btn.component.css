@@ -1,0 +1,16 @@
+.new-event-warpper{
+    position: relative;
+    width: 100%;
+    margin: 20px;
+}
+
+.new-event-warpper > button{
+
+    border-radius: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.new-event-warpper > button > i{
+    font-size: 30px;
+}

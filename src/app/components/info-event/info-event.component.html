@@ -1,0 +1,36 @@
+
+<form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+
+    <div class="row">
+
+        <mat-form-field class="example-full-width center">
+            <input matInput 
+            [formControl]="startDateControl" 
+           
+             [matDatepicker]="picker"
+              placeholder="When it will happening">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+    </div>
+    
+    <div class="row">
+        <mat-form-field class="center description-wrapper">
+            <textarea
+            matInput 
+            placeholder="{{descriptionPlaceholder}}" 
+            (focus)="focusDescription()"
+            (blur)="blurDescription()"
+            (keyup)="changeDescription()"
+            [formControl]="descriptionControl"  
+            rows="10"></textarea>
+          </mat-form-field>
+    </div>
+</form>
+
+<div class="row go-next-btn-wrapper">
+    <action-btn class="center" text="Go next" (change)="saveInfo($event)" ></action-btn>
+</div>   
+<div *ngIf="error" class="error-msg">{{error}}</div>
+
+       

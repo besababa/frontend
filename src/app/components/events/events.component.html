@@ -1,0 +1,9 @@
+ <div class="row">
+  <div class="col-md event-card-wrapper" *ngFor="let event of events">
+    <a [routerLink]="['/event',event.id]">
+        <event-card [event]='event'></event-card>
+    </a>
+  </div>
+</div>
+
+

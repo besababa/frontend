@@ -1,16 +1,175 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule, MatNativeDateModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
+import { BackBtnComponent } from './components/back-btn/back-btn.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
+import { EventsComponent } from './components/events/events.component';
+import { FoterComponent } from './components/foter/foter.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { NewEventBtnComponent } from './components/new-event-btn/new-event-btn.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
+import { TitleEventComponent } from './components/title-event/title-event.component';
+import { RoutingState } from './helpers/RoutingState';
+import { TokenInterceptor } from './helpers/token.interceptor';
+import { AuthService } from './services/auth.service';
+import { EventsService } from './services/events.service';
+import { ImageEventComponent } from './components/image-event/image-event.component';
+import { ActionBtnComponent } from './components/btn/action-btn/action-btn.component';
+import { AppErrorHandler } from './common/app-error-handler';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PageTitleComponent } from './components/page-title/page-title.component';
+import { InfoEventComponent } from './components/info-event/info-event.component';
+import { MainEventComponent } from './components/main-event/main-event.component';
+import { LongTextComponent } from './components/long-text/long-text.component';
+
+
+
+const appRoutes:Routes = [
+
+  {
+    path:'event',
+    children:[
+      {
+        path:'title',
+        component:TitleEventComponent,
+       
+      },
+    
+      {
+        path:'image',
+        component:ImageEventComponent,
+       
+      },
+      {
+        path:'info',
+        component:InfoEventComponent,
+       
+      },
+      {
+        path:':event_id',
+        component:MainEventComponent,
+       
+      },
+    ]
+  },  
+  
+
+ 
+  {
+    path:'login',
+    component:LoginComponent,
+   
+  },
+  {
+    path:'register',
+    component:RegisterComponent,
+   
+  },
+
+  {
+   path:'',
+   component:HomeComponent,
+  
+ },
+ {
+   path:'not-fount',
+   component:NotFoundComponent,
+ }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent,
+    HeaderComponent,
+    FoterComponent,
+    HomeComponent,
+    BackBtnComponent,
+    NewEventBtnComponent,
+    EventsComponent,
+    EventCardComponent,
+    TitleEventComponent,
+    LoginComponent,
+    RegisterComponent,
+    ImageEventComponent,
+    ActionBtnComponent,
+    PageTitleComponent,
+    InfoEventComponent,
+    MainEventComponent,
+    LongTextComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatMenuModule,
+    MatBadgeModule,
+    MatIconModule,
+    MatCardModule,
+    MatListModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatTabsModule,
+    MatSlideToggleModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatAutocompleteModule,
+    MatToolbarModule,
+    AngularFontAwesomeModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
+    
   ],
-  providers: [],
+  providers: [
+    RoutingState,
+    AuthService,
+    EventsService,
+    {provide:ErrorHandler, useClass:AppErrorHandler},
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,48 @@
+
+<div class="row">
+
+    <div class="col-12 col-md-6">
+
+        <div class="row">
+
+            <div class="col-6 title-event">
+                <div class="event-title">{{event.title}} </div>
+            </div>
+        
+            <div class="col-6 date-event text-right">
+                <span class="event-start-date">{{event.start_date}}</span>
+                <span class="event-end-date" *ngIf="event.end_date"> - {{event.end_date}}</span>
+            </div>
+    
+            <div class="col-12">
+                <img class="event-image" [src]="event.image" [alt]="event.alt_image">
+            </div>
+        </div>
+
+    </div>
+    
+
+    <div class="col-12 col-md-6 description-wrapper">
+        <long-text length="150" text="{{event.description}}"></long-text>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+  <div class="col-12">
+      <action-btn class="center event-btn"  text="Friends" routerLink="/event/{{event.id}}/friend" ></action-btn>
+  </div>
+
+  <div class="col-12">
+      <action-btn class="center event-btn"  text="Chat Room" routerLink="/event/{{event.id}}/friend" ></action-btn>
+  </div>
+
+  <div class="col-12">
+      <action-btn class="center event-btn"  text="Setting" routerLink="/event/{{event.id}}/friend" ></action-btn>
+  </div>
+</div>
+
+
+

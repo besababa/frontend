@@ -1,0 +1,12 @@
+.text-center{
+    width: 100%;
+    text-align: center;
+}
+
+ .mat-card-image{
+    margin: 0 auto!important;
+
+}
+.mat-card .mat-card-header .mat-card-header-text{
+    margin: 0 auto;
+}

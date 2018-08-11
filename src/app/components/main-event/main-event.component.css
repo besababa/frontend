@@ -1,0 +1,21 @@
+.event-image{
+    width: 100%;
+    height: auto;
+}
+
+.event-start-date,.event-end-date{
+
+    opacity: 0.7;
+    font-size: 0.8em;
+   
+}
+
+.event-dates{
+    float: right;
+}
+
+.description-wrapper{
+
+    margin-top:20px 
+}
+
