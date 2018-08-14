@@ -9,6 +9,6 @@ RUN apt-get update &&\
 RUN cd /src/besababa/frontend &&\
     npm install &&\
     npm run build --prod&&\
-    mv /src/besababa/frontend/dist/events/* /var/www/html/
+    mv /src/besababa/frontend/dist/besababa/* /var/www/html/
 
 CMD ["nginx", "-g", "daemon off;"]
