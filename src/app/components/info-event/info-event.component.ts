@@ -13,7 +13,7 @@ export class InfoEventComponent implements OnInit {
   descriptionControl = new FormControl();
   startDateControl = new FormControl()
   title=this.descriptionControl.value;
-
+  event:AppEvent;
   descriptionPlaceholder:string;
   placheholder:string = 'Comme to the best event of the year';
   emptyDescription="Write some description";
@@ -26,6 +26,7 @@ export class InfoEventComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+      this.event = this.eventService.getEvent();
       this.descriptionPlaceholder = this.placheholder;
   }
 
@@ -46,15 +47,17 @@ export class InfoEventComponent implements OnInit {
     }
   }
 
-  saveInfo(e){
+  saveInfo(){
 
     let event_id = this.eventService.getEventId();
+    
     let resource = {description:this.descriptionControl.value,start_date:this.startDateControl.value}
 
     this.eventService.update(event_id,resource)
     .subscribe((event:AppEvent) => { 
-      console.log(event_id)
-       if (event.id){
+      
+       if (event._id){
+         this.eventService.setEvent(event);
           this.router.navigate(['event/'+event_id]);
         }
  

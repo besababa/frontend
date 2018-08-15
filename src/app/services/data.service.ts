@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { AppError } from '../common/app-error';
 import { BadINput } from '../common/bad-input';
 import { NotFoundError } from '../common/not-found-error';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import { NotFoundError } from '../common/not-found-error';
 
 export class DataService {
   
-  constructor(public url:string,public http : HttpClient) { }
+  constructor(public url:string,public http : HttpClient,public router:Router) { }
   
   getAll(){
     
@@ -53,9 +54,9 @@ export class DataService {
       return Observable.throw(new NotFoundError)
 
     if(response.status ==400)
-      return Observable.throw(new BadINput(response['error']['error']));
+      return Observable.throw(new BadINput(response['message']));
 
-    return Observable.throw(new AppError(response['error']['error']));
+    return Observable.throw(new AppError(response['message']));
 
   }
 

@@ -1,18 +1,18 @@
 <div class="row header">
    
-    <div *ngIf="auth.isLoggedIn()"  class="col-2 pull-left user-img-wrapper" routerLink="/user/{{auth.currentUser._id}}">
+    <div   class="col-2 pull-left user-img-wrapper">
         
-        <img class="user-avatar pull-left "  [src]="auth.currentUser.image" >
+        <img *ngIf="auth.isLoggedIn()" class="user-avatar pull-left "  [src]="auth.currentUser.image" routerLink="/user/{{auth.currentUser._id}}">
 
     </div>
     
 
     <div class="col-8 header-title-wrapper" >
-        <h1 routerLink="/" class="header-title text-center">אירועים</h1>
+        <h1 routerLink="/" class="header-title text-center">Besababa</h1>
     </div> 
 
     <div class="col-2 pull-right">
-      <div class="header-menu-wrapper">
+      <div class="header-menu-wrapper text-right">
           <mat-icon mat-icon-button [matMenuTriggerFor]="menu">menu</mat-icon>
           
           <mat-menu #menu="matMenu">

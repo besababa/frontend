@@ -1,13 +1,14 @@
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from './../../environments/environment.prod';
 import { DataService } from './data.service';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -17,32 +18,48 @@ import { map } from 'rxjs/operators';
 
 export class EventsService extends DataService{
 
-  constructor( http : HttpClient) { 
+  private event:AppEvent;
+ 
+  constructor( http : HttpClient, router:Router){ 
     
-    super(environment.api_url+'/events',http);
+    super(environment.api_url+'/events',http,router);
+  }
+  setEvent(event){
+    console.log(event)
+    this.event = event
+  }
+  getEvent(){
+
+    console.log(this.event)
+    if(!this.event){
+      this.router.navigate(['event']);
+      return false;
+    }
+    return this.event;
   }
   
+  getNotifications(event_id){
 
-  uploadEventImage(file):Observable<AppEventImage>{
+    return this.http.get(this.url+'/'+event_id+'/notifications')
+      .catch(this.handelError);
+  }
 
-    return this.http.post<AppEventImage>(this.url+'/upload/event-image',file)
+  uploadEventImage(file):Observable<string>{
+    
+    return this.http.post<string>(this.url+'/upload/event-image',file)
       .catch(this.handelError);
   }
   getEventTitles():Observable<any>{
 
     return this.http.get<any>(this.url+'/titles') 
-    .catch(this.handelError)
-    .pipe( map( result => {
-     
-        if(result.event_id){  
-          localStorage.setItem('event_id',result.event_id)
-        }
-    }));
+    .catch(this.handelError);
+   
   }
 
-  getEventImages():Observable<AppEventImage[]>{
+  getEventImages(title):Observable<string[]>{
 
-    return this.http.get<AppEventImage[]>(this.url+'/images')
+    console.log(title)
+    return this.http.post<string[]>(this.url+'/images',title)
       .catch(this.handelError);
 
   }
@@ -59,7 +76,8 @@ export class EventsService extends DataService{
   }
 
   getEventId(){
-    return localStorage.getItem('event_id');
+  
+    return (this.event)? this.event._id:null;
   }
 
 }    
@@ -89,21 +107,17 @@ export interface AppEventFriend{
 }
 
 export interface AppEvent {
-  id:any;
+  _id:any;
   published: boolean;
   image: string;
   end_date:string;
   start_date:string;
   title: string;
-  alt_image: string;
   description:string;
 }
 export interface AppEventTitle{
   title:string;
 }
-export interface AppEventImage{
-  url:string;
-  alt_image:string;
-}
+
 
 

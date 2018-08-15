@@ -20,23 +20,25 @@ export class TitleEventComponent implements OnInit {
 
   titleControl = new FormControl();
   title=this.titleControl.value;
-  titles: string[] = ['Best Event', 'The Event Of The Year', 'My Birth Day'];
-
-
+  titles: string[];
   invalidEvent:boolean;
 
   ngOnInit() {
 
     this.eventService.getEventTitles()
     .subscribe(
-      titles =>{
+      result =>{
 
-      this.titles = titles;
+      this.titles = result.titles;
 
     },error=>{
 
+      this.titles= ['Best Event', 'The Event Of The Year', 'My Birth Day'];
+
       if(error instanceof NotFoundError){
+
         console.log('not found error');
+        
       }else throw error;
         
     })
@@ -51,11 +53,12 @@ export class TitleEventComponent implements OnInit {
     let title = (this.titleControl.value)?this.titleControl.value:this.placeholder;
 
     this.eventService.create({title:title})
-    .subscribe((event:AppEvent) => { 
-       console.log(event)
-      
-       if (event.id){
-          localStorage.setItem('event_id',event.id)
+    .subscribe(result => { 
+     
+       if (result['event']){
+
+          this.eventService.setEvent(result['event']);
+         
           this.router.navigate(['event/image']);
 
         } else this.invalidEvent = true;

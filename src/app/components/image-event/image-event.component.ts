@@ -17,15 +17,15 @@ export class ImageEventComponent implements OnInit {
 
   index;
   error:string;
- 
+  event:AppEvent;
   public images = [ 
-   {url: 'https://placeimg.com/300/300/nature/6',alt_image:'first'},
-   {url:'https://placeimg.com/300/300/nature/7',alt_image:'first'},
-   {url: 'https://placeimg.com/300/300/nature/8',alt_image:'first'},
-   {url: 'https://placeimg.com/300/300/nature/9',alt_image:'first'},
-   {url: 'https://placeimg.com/300/300/nature/2',alt_image:'first'},
-   {url: 'https://placeimg.com/300/300/nature/3',alt_image:'first'},
-   {url: 'https://placeimg.com/300/300/nature/1',alt_image:'first'},
+    'https://placeimg.com/300/300/nature/6',
+    'https://placeimg.com/300/300/nature/7',
+    'https://placeimg.com/300/300/nature/8',
+    'https://placeimg.com/300/300/nature/9',
+    'https://placeimg.com/300/300/nature/2',
+    'https://placeimg.com/300/300/nature/3',
+    'https://placeimg.com/300/300/nature/1',
   ];
 
   constructor(
@@ -45,8 +45,19 @@ export class ImageEventComponent implements OnInit {
   
   ngOnInit() {
 
-    this.eventService.getEventImages()
-    .subscribe(images =>this.images = images)
+    this.event = this.eventService.getEvent();
+
+    
+
+    const title = {title:this.event.title};
+
+    console.log(title);
+    this.eventService.getEventImages(title)
+    .subscribe(result =>{
+      console.log(result['images'])
+      
+      this.images = result['images']
+    })
 
   }
 
@@ -57,10 +68,13 @@ export class ImageEventComponent implements OnInit {
     this.error = null;
 
     if((image.type=='image/jpeg' || image.type=='image/png') && image.size<400000){
+     
+      let formData:FormData = new FormData();
+      formData.append('eventImage', image, image.name);
+  
+      this.eventService.uploadEventImage(formData).subscribe(result=>{
 
-      this.eventService.uploadEventImage(image).subscribe(image=>{
-
-        this.images.splice(parseInt(this.myCarousel.activeId),0,image)
+        this.images.splice(parseInt(this.myCarousel.activeId),0,result['image'])
        
       },(error:AppError)=>{
        
@@ -77,23 +91,18 @@ export class ImageEventComponent implements OnInit {
 
       })
     }
-    
-
-
   }
 
   
   saveImage(){
 
-    
-    let image = this.images[this.myCarousel.activeId];
+    this.event.image = this.images[this.myCarousel.activeId];
 
-   
-   let event_id = this.eventService.getEventId();
-   this.eventService.update(event_id,image)
+   this.eventService.update( this.event._id, this.event)
    .subscribe((event:AppEvent) => { 
      
-      if (event.id){
+      if (event._id){
+         this.eventService.setEvent(event);
          this.router.navigate(['event/info']);
        }
 

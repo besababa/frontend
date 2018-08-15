@@ -23,7 +23,7 @@ export class RoutingState {
             this.lastUrl = urlAfterRedirects
 
             this.history = [...this.history, urlAfterRedirects];
-            console.log(this.history)
+           
         }
     
       });

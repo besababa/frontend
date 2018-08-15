@@ -49,11 +49,18 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { InfoEventComponent } from './components/info-event/info-event.component';
 import { MainEventComponent } from './components/main-event/main-event.component';
 import { LongTextComponent } from './components/long-text/long-text.component';
+import { EventHeaderComponent } from './components/event-header/event-header.component';
+import { EventNotificationsComponent } from './components/event-notifications/event-notifications.component';
 
 
 
 const appRoutes:Routes = [
 
+  {
+    path:'',
+    component:HomeComponent,
+   
+  },
   {
     path:'event',
     children:[
@@ -94,11 +101,7 @@ const appRoutes:Routes = [
    
   },
 
-  {
-   path:'',
-   component:HomeComponent,
   
- },
  {
    path:'not-fount',
    component:NotFoundComponent,
@@ -125,6 +128,8 @@ const appRoutes:Routes = [
     InfoEventComponent,
     MainEventComponent,
     LongTextComponent,
+    EventHeaderComponent,
+    EventNotificationsComponent,
   ],
   imports: [
     BrowserModule,
