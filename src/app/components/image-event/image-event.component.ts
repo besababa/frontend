@@ -47,8 +47,7 @@ export class ImageEventComponent implements OnInit {
 
     this.event = this.eventService.getEvent();
 
-    
-
+    if(!this.event) return false;
     const title = {title:this.event.title};
 
     console.log(title);
@@ -94,7 +93,7 @@ export class ImageEventComponent implements OnInit {
   }
 
   
-  saveImage(){
+  saveImage(e){
 
     this.event.image = this.images[this.myCarousel.activeId];
 

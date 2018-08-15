@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   inputs:['text']
 })
 export class PageTitleComponent {
-
+  text:string;
   constructor() { }
 
   ngOnInit() {

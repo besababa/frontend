@@ -48,7 +48,7 @@ export class TitleEventComponent implements OnInit {
 
     return (this.titleControl.value)?'Your title is':this.titles[0];
   }
-  saveTitle(){
+  saveTitle(e){
 
     let title = (this.titleControl.value)?this.titleControl.value:this.placeholder;
 

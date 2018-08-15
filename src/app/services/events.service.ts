@@ -33,7 +33,6 @@ export class EventsService extends DataService{
     console.log(this.event)
     if(!this.event){
       this.router.navigate(['event']);
-      return false;
     }
     return this.event;
   }

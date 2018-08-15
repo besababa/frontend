@@ -47,7 +47,7 @@ export class InfoEventComponent implements OnInit {
     }
   }
 
-  saveInfo(){
+  saveInfo(e){
 
     let event_id = this.eventService.getEventId();
     

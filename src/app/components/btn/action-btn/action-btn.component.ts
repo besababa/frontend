@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   inputs:['text','width']
 })
 export class ActionBtnComponent {
-
+  text:string;
   width:string;
   @Output() change: EventEmitter<number> = new EventEmitter<number>();
 
