@@ -1,14 +1,11 @@
-FROM node:10.5
-
-
+# Build stage
+FROM node:10.5 as build-stage
 COPY . /src/besababa/frontend
-
-RUN apt-get update &&\
-    apt-get install -y nginx
-
 RUN cd /src/besababa/frontend &&\
     npm install &&\
-    npm run build --prod&&\
-    mv /src/besababa/frontend/dist/events/* /var/www/html/
+    npm run build --prod
 
-CMD ["nginx", "-g", "daemon off;"]
+# Actual image
+FROM nginx:alpine
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build-stage /src/besababa/frontend/dist/besababa/ /var/www/html
