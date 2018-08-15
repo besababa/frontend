@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MainEventComponent implements OnInit {
 
-  event:AppEvent= {
+  event:any= {
     _id:3409583098,
     published: false,
     image:'assets/images/party.jpeg',
@@ -29,9 +29,10 @@ export class MainEventComponent implements OnInit {
 
         console.log(parmas.get('event_id'))
         this.eventService.getOne(parmas.get('event_id'))
-        .subscribe(result=>{
+        .subscribe(event=>{
 
-          console.log(result)
+          this.event.title= event['title'];
+          console.log( this.event)
 
         }, error=>{
 

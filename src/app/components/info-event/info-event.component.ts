@@ -15,7 +15,7 @@ export class InfoEventComponent implements OnInit {
   title=this.descriptionControl.value;
   event:AppEvent;
   descriptionPlaceholder:string;
-  placheholder:string = 'Comme to the best event of the year';
+  placheholder:string = "It's going to be the best party of the year";
   emptyDescription="Write some description";
   start_date;
   description:string;

@@ -95,8 +95,12 @@ export class ImageEventComponent implements OnInit {
   
   saveImage(e){
 
-    this.event.image = this.images[this.myCarousel.activeId];
+   let image = this.images[this.myCarousel.activeId];
+   console.log(image)
+   console.log(image.url)
 
+   this.event.image = image.url;
+   console.log(this.event)
    this.eventService.update( this.event._id, this.event)
    .subscribe((event:AppEvent) => { 
      

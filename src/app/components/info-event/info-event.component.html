@@ -1,14 +1,14 @@
 
-<form class="form-signin" #f="ngForm">
+<form class="info-event-form" #f="ngForm">
 
     <div class="row">
 
-        <mat-form-field class="example-full-width center">
+        <mat-form-field class="example-full-width pull-left">
             <input matInput 
             [formControl]="startDateControl" 
            
              [matDatepicker]="picker"
-              placeholder="When it will happening">
+              placeholder="When is the good stuff start?">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker></mat-datepicker>
           </mat-form-field>
