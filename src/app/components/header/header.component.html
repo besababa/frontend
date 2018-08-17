@@ -1,14 +1,8 @@
 <div class="row header">
    
-    <div   class="col-2 pull-left user-img-wrapper">
-        
-        <img *ngIf="auth.isLoggedIn()" class="user-avatar pull-left "  [src]="auth.currentUser.image" routerLink="/user/{{auth.currentUser._id}}">
-
-    </div>
-    
-
-    <div class="col-8 header-title-wrapper" >
-        <h1 routerLink="/" class="header-title text-center">Besababa</h1>
+   
+    <div class="col-10 header-title-wrapper" >
+        <h1 routerLink="/" class="header-title text-left">Besababa</h1>
     </div> 
 
     <div class="col-2 pull-right">

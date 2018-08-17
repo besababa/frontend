@@ -1,21 +1,20 @@
 <div class="row event-header-wrapper">
-  <div class="col-1">
+    <div   class="col-2 pull-left user-img-wrapper">
+        <img class="user-avatar pull-left "  [src]="auth.currentUser.image" routerLink="/user/{{auth.currentUser._id}}">
+    </div>
+  <div class="col-2">
     <i class="fa fa-comment"></i>
   </div>
   
  
-  <div class="col-1">
+  <div class="col-2">
     <i class="fa fa-user-plus"></i> 
   </div>
 
-  <div class="col-1">
+  <div class="col-2">
       <i class="fa fa-image"></i>
   </div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-  <div class="col-1"></div>
+ 
   <div class="col-1"></div>
   <div class="col-1"></div>
     <div class="col-1">

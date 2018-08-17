@@ -19,13 +19,13 @@ export class ImageEventComponent implements OnInit {
   error:string;
   event:AppEvent;
   public images = [ 
-    'https://placeimg.com/300/300/nature/6',
-    'https://placeimg.com/300/300/nature/7',
-    'https://placeimg.com/300/300/nature/8',
-    'https://placeimg.com/300/300/nature/9',
-    'https://placeimg.com/300/300/nature/2',
-    'https://placeimg.com/300/300/nature/3',
-    'https://placeimg.com/300/300/nature/1',
+   {url: 'https://placeimg.com/300/300/nature/1' ,alt_image:'image'},
+   {url: 'https://placeimg.com/300/300/nature/2' ,alt_image:'image'},
+   {url: 'https://placeimg.com/300/300/nature/3' ,alt_image:'image'},
+   {url: 'https://placeimg.com/300/300/nature/4' ,alt_image:'image'},
+   {url: 'https://placeimg.com/300/300/nature/5' ,alt_image:'image'},
+   {url: 'https://placeimg.com/300/300/nature/6' ,alt_image:'image'},
+   {url: 'https://placeimg.com/300/300/nature/7' ,alt_image:'image'},
   ];
 
   constructor(
@@ -53,9 +53,9 @@ export class ImageEventComponent implements OnInit {
     console.log(title);
     this.eventService.getEventImages(title)
     .subscribe(result =>{
-      console.log(result['images'])
       
-      this.images = result['images']
+      if(result['images'] && result['images'].length)
+        this.images = result['images']
     })
 
   }
