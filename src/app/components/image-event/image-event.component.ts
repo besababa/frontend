@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { EventsService, AppEvent } from '../../services/events.service';
+import { EventsService, AppEvent, AppImage } from '../../services/events.service';
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotFoundError } from '../../common/not-found-error';
@@ -71,9 +71,9 @@ export class ImageEventComponent implements OnInit {
       let formData:FormData = new FormData();
       formData.append('eventImage', image, image.name);
   
-      this.eventService.uploadEventImage(formData).subscribe(result=>{
+      this.eventService.uploadEventImage(formData).subscribe((result:AppImage)=>{
 
-        this.images.splice(parseInt(this.myCarousel.activeId),0,result['image'])
+        this.images.splice(parseInt(this.myCarousel.activeId),0,result)
        
       },(error:AppError)=>{
        

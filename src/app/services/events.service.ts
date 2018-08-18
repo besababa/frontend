@@ -44,9 +44,14 @@ export class EventsService extends DataService{
       .catch(this.handelError);
   }
 
-  uploadEventImage(file):Observable<string>{
+  uploadEventImage(file){
     
-    return this.http.post<string>(this.url+'/upload/event-image',file)
+    return this.http.post(this.url+'/upload/event-image',file)
+    .pipe( map( result => {
+      result['alt_image'] = 'new event image';
+      return result;
+
+    }))
       .catch(this.handelError);
   }
   getEventTitles():Observable<any>{
@@ -82,6 +87,10 @@ export class EventsService extends DataService{
 
 }    
 
+export interface AppImage{
+  url:string;
+  alt_image:string;
+}
   
 export interface AppWhoBrings{
   friend_id:number;
