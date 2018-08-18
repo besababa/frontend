@@ -48,7 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { InfoEventComponent } from './components/info-event/info-event.component';
 import { MainEventComponent } from './components/main-event/main-event.component';
-import { LongTextComponent } from './components/long-text/long-text.component';
+import { ReadMoreComponent } from './components/long-text/long-text.component';
 import { EventHeaderComponent } from './components/event-header/event-header.component';
 import { EventNotificationsComponent } from './components/event-notifications/event-notifications.component';
 
@@ -127,7 +127,7 @@ const appRoutes:Routes = [
     PageTitleComponent,
     InfoEventComponent,
     MainEventComponent,
-    LongTextComponent,
+    ReadMoreComponent,
     EventHeaderComponent,
     EventNotificationsComponent,
   ],

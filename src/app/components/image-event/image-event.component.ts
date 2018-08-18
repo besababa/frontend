@@ -19,13 +19,11 @@ export class ImageEventComponent implements OnInit {
   error:string;
   event:AppEvent;
   public images = [ 
-   {url: 'https://placeimg.com/300/300/nature/1' ,alt_image:'image'},
-   {url: 'https://placeimg.com/300/300/nature/2' ,alt_image:'image'},
-   {url: 'https://placeimg.com/300/300/nature/3' ,alt_image:'image'},
-   {url: 'https://placeimg.com/300/300/nature/4' ,alt_image:'image'},
-   {url: 'https://placeimg.com/300/300/nature/5' ,alt_image:'image'},
-   {url: 'https://placeimg.com/300/300/nature/6' ,alt_image:'image'},
-   {url: 'https://placeimg.com/300/300/nature/7' ,alt_image:'image'},
+    {url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgMcWK9DGlbfJE7ZJG7Y8-tgNrF2LTW_BrJI1hTDZtasEbcEr3' ,alt_image:'image'},
+    {url: 'http://kingpinsalley.com/wp-content/uploads/2013/08/adult_birthday_party.jpg' ,alt_image:'image'},
+    {url: 'https://www.londonpartyboats.co.uk/content/panels/riverboat-party-tickets-300-5.jpg?cb=' ,alt_image:'image'},
+    {url: 'https://i.pinimg.com/736x/40/f6/ec/40f6ec15ddfcc3a7b792212e157c545e--romantic-evening-a-romantic.jpg' ,alt_image:'image'},
+    {url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzHk2eMBG6LZeShMZJYV6_OSH5DYoTk3MJC1oMYX8bFrKrqCia' ,alt_image:'image'},
   ];
 
   constructor(
@@ -46,17 +44,23 @@ export class ImageEventComponent implements OnInit {
   ngOnInit() {
 
     this.event = this.eventService.getEvent();
-
     if(!this.event) return false;
-    const title = {title:this.event.title};
 
-    console.log(title);
-    this.eventService.getEventImages(title)
+    let title = this.event.title
+   
+    title = title.replace(" Day", "");
+
+    const searchTitle = {title:title};
+
+    this.eventService.getEventImages(searchTitle)
     .subscribe(result =>{
-      
-      if(result['images'] && result['images'].length)
+
+      if(result['images'] && result['images'].length>0)
         this.images = result['images']
+
+
     })
+
 
   }
 
@@ -96,24 +100,27 @@ export class ImageEventComponent implements OnInit {
   saveImage(e){
 
    let image = this.images[this.myCarousel.activeId];
-   console.log(image)
-   console.log(image.url)
-
+   
    this.event.image = image.url;
-   console.log(this.event)
-   this.eventService.update( this.event._id, this.event)
-   .subscribe((event:AppEvent) => { 
+
+   this.eventService.setEvent(this.event);
+
+   this.router.navigate(['event/info']);
+
+
+  //  this.eventService.update( this.event._id, this.event)
+  //  .subscribe((event:AppEvent) => { 
      
-      if (event._id){
-         this.eventService.setEvent(event);
-         this.router.navigate(['event/info']);
-       }
+  //     if (event._id){
+         
+  //        this.router.navigate(['event/info']);
+  //      }
 
-     },error=>{
+  //    },error=>{
 
-       this.router.navigate(['event/info']);
-       this.error = 'Server Error'; 
-     });
+  //      this.router.navigate(['event/info']);
+  //      this.error = 'Server Error'; 
+  //    });
   }
 
 

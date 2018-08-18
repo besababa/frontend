@@ -69,11 +69,20 @@ export class AuthService {
 
     let user = new JwtHelperService().decodeToken( token );
 
-    if(typeof user.image!=='string'){
-      user.image = 'assets/images/user-avatar.jpeg'
+  
+    return user;
+  }
+
+  get userAvatar(){
+
+    let image = 'assets/images/user-avatar.jpeg';
+
+    if( this.currentUser ){
+      image = this.currentUser.image
     }
 
-    return user;
+    return image;
+
   }
 
   getToken(){

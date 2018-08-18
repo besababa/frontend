@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class EventHeaderComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

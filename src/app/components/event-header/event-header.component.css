@@ -2,5 +2,20 @@
     padding: 10px 0 10px 0;
     border-bottom: 1px solid #f2f2f2;
     font-size: 1.2em;
-    background-color: #f7b336
+    background-color: #f7b336;
+    margin: 20px 0;
+    line-height: 35px;
+}
+
+
+.user-avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+
+}
+
+.event-manu-icon{
+
+    font-size: 1.5em;
 }

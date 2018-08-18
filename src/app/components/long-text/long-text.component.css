@@ -1,51 +1,13 @@
-.read-more-state {
-    display: none;
-  }
- 
-  
-  .read-more-target {
-    opacity: 0;
-    max-height: 0;
-    font-size: 0;
-    transition: .25s ease;
-  }
-  
-  .read-more-state:checked ~ .read-more-wrap .read-more-target {
-    opacity: 1;
-    font-size: inherit;
-    max-height: 999em;
-  }
-  
-  .read-more-state ~ .read-more-trigger:before {
-    content: 'more...';
-  }
-  
-  .read-more-state:checked ~ .read-more-trigger:before {
-    content: 'less...';
-  }
-  
-  .read-more-trigger {
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 .5em;
-    color: #666;
-    font-size: .9em;
-    line-height: 2;
-   color: red
-  }
-  
-  @media only screen and (min-width: 770px) {
-    
-    .read-more-wrap .read-more-target {
-        opacity: 1;
-        font-size: inherit;
-        max-height: 999em;
-      }
-      .read-more-state ~ .read-more-trigger:before {
-        display: none;
-      }
-      
-      .read-more-state:checked ~ .read-more-trigger:before {
-        display: none;
-      }
+
+
+.read-more-wrapper {
+  font-size: 16px;
+  line-height: 16px;
+  height: 48px;
+  overflow: hidden;
+  opacity: 0.8;
+}
+.show {
+  overflow: visible;
+  height: auto;
 }

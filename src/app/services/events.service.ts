@@ -3,7 +3,7 @@ import 'rxjs/add/operator/catch';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 
 import { environment } from './../../environments/environment.prod';
 import { DataService } from './data.service';
@@ -25,7 +25,6 @@ export class EventsService extends DataService{
     super(environment.api_url+'/events',http,router);
   }
   setEvent(event){
-    console.log(event)
     this.event = event
   }
   getEvent(){
@@ -63,7 +62,6 @@ export class EventsService extends DataService{
 
   getEventImages(title):Observable<string[]>{
 
-    console.log(title)
     return this.http.post<string[]>(this.url+'/images',title)
       .catch(this.handelError);
 
