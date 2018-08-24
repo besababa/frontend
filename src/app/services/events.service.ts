@@ -33,8 +33,19 @@ export class EventsService extends DataService{
     if(!this.event){
       this.router.navigate(['/']);
     }
-    stop;
     return this.event;
+  }
+
+  updateEvent(resource){
+console.log(this.url)
+    return this.http.put(this.url,resource)
+    .pipe( map( result => {
+      
+      return result['event'];
+
+    }))
+    .catch(this.handelError);
+
   }
   
   getNotifications(event_id){

@@ -21,9 +21,10 @@ export class MainEventComponent implements OnInit {
         this.eventService.getOne(parmas.get('event_id'))
         .subscribe((event:AppEvent)=>{
 
-          let TempEvent = this.eventService.getEvent();
-
-          this.event =(TempEvent)? TempEvent:event;
+          let tempEvent = this.eventService.getEvent();
+            console.log(event);
+            console.log(tempEvent)
+          this.event = (event)? event: tempEvent;
         
         }, error=>{
   

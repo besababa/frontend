@@ -6,7 +6,7 @@
 <form class="info-event-form" #f="ngForm">
 
     <div class="row">
-        <mat-form-field>
+        <mat-form-field class="col-12">
             <input matInput [matDatepicker]="dp" placeholder="Moment.js datepicker" [formControl]="date">
             <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
             <mat-datepicker #dp></mat-datepicker>
@@ -16,7 +16,7 @@
     
     
     <div class="row">
-        <mat-form-field class="center col-xs-12 col-md-6 pull-left">
+        <mat-form-field class="col-12">
             <textarea
             matInput 
             placeholder="{{descriptionPlaceholder}}" 

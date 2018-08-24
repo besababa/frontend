@@ -98,9 +98,9 @@ export class InfoEventComponent implements OnInit {
 
     this.eventService.setEvent(this.event);
 
-    this.eventService.update(event_id,this.event)
+    this.eventService.updateEvent(this.event)
     .subscribe((event:AppEvent) => { 
-      
+      console.log(event)
        if (event._id){
           this.router.navigate(['event/'+event_id]);
         }

@@ -18,7 +18,9 @@ export class ImageEventComponent implements OnInit {
   index;
   error:string;
   event:AppEvent;
-  public images = [ 
+  public images;
+  
+  public tempImages = [ 
     {url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgMcWK9DGlbfJE7ZJG7Y8-tgNrF2LTW_BrJI1hTDZtasEbcEr3' ,alt_image:'image'},
     {url: 'http://kingpinsalley.com/wp-content/uploads/2013/08/adult_birthday_party.jpg' ,alt_image:'image'},
     {url: 'https://www.londonpartyboats.co.uk/content/panels/riverboat-party-tickets-300-5.jpg?cb=' ,alt_image:'image'},
@@ -55,9 +57,14 @@ export class ImageEventComponent implements OnInit {
     this.eventService.getEventImages(searchTitle)
     .subscribe(result =>{
 
-      if(result['images'] && result['images'].length>0)
+      if(result['images'] && result['images'].length>0){
+
         this.images = result['images']
 
+      }else{
+
+        this.images = this.tempImages;
+      }
 
     })
 
@@ -70,7 +77,7 @@ export class ImageEventComponent implements OnInit {
    
     this.error = null;
 
-    if((image.type=='image/jpeg' || image.type=='image/png') && image.size<400000){
+    if((image.type=='image/jpeg' || image.type=='image/png')){
      
       let formData:FormData = new FormData();
       formData.append('eventImage', image, image.name);
@@ -93,6 +100,8 @@ export class ImageEventComponent implements OnInit {
        
 
       })
+    }else{
+      this.error = "You can upload jpeg or png only"
     }
   }
 
@@ -108,19 +117,19 @@ export class ImageEventComponent implements OnInit {
    this.router.navigate(['event/info']);
 
 
-  //  this.eventService.update( this.event._id, this.event)
-  //  .subscribe((event:AppEvent) => { 
+    this.eventService.updateEvent( this.event)
+    .subscribe((event:AppEvent) => { 
      
-  //     if (event._id){
+       if (event._id){
          
-  //        this.router.navigate(['event/info']);
-  //      }
+          this.router.navigate(['event/info']);
+        }
 
-  //    },error=>{
+      },error=>{
 
-  //      this.router.navigate(['event/info']);
-  //      this.error = 'Server Error'; 
-  //    });
+        this.router.navigate(['event/info']);
+        this.error = 'Server Error'; 
+      });
   }
 
 
