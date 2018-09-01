@@ -22,7 +22,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     let token = this.auth.getToken();
     if (token) {
-      request = request.clone({ setHeaders: { 'x-auth-token': token }});
+      request = request.clone({ setHeaders: { 'Authorization': 'Bearer ' + token }});
     }
 
     let event_id = this.eventService.getEventId()

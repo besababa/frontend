@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url:"http://api.besababa.com"
+  api_url:"http://localhost:8000"
 
 };
 

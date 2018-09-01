@@ -37,17 +37,27 @@ export class EventsService extends DataService{
   }
 
   updateEvent(resource){
-console.log(this.url)
-    return this.http.put(this.url,resource)
+
+    return this.http.post(this.url+"/update",resource)
+      .catch(this.handelError);
+
+  }
+  
+  createEvent(resource){
+
+    return this.http.post(this.url,resource)
     .pipe( map( result => {
-      
+      console.log(result);
+      if(result && result['token']){
+        localStorage.setItem('token',result['token'])
+      }
+
       return result['event'];
 
     }))
     .catch(this.handelError);
-
   }
-  
+
   getNotifications(event_id){
 
     return this.http.get(this.url+'/'+event_id+'/notifications')
@@ -91,7 +101,7 @@ console.log(this.url)
 
   getEventId(){
   
-    return (this.event)? this.event._id:null;
+    return (this.event)? this.event.id:null;
   }
 
 }    
@@ -125,7 +135,7 @@ export interface AppEventFriend{
 }
 
 export interface AppEvent {
-  _id:any;
+  id:any;
   published: boolean;
   image: string;
   end_date:string;

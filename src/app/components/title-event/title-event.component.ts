@@ -52,18 +52,19 @@ export class TitleEventComponent implements OnInit {
 
     let title = (this.titleControl.value)?this.titleControl.value:this.placeholder;
 
-    this.eventService.create({title:title})
-    .subscribe(result => { 
+    this.eventService.createEvent({title:title})
+    .subscribe(event => { 
      
-       if (result['event']){
+       if (event){
 
-          this.eventService.setEvent(result['event']);
+          this.eventService.setEvent(event);
          
           this.router.navigate(['event/image']);
 
         } else this.invalidEvent = true;
 
       },error=>{
+
         this.router.navigate(['event/image']);
         this.invalidEvent = true; 
       });

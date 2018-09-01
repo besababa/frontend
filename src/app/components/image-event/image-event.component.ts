@@ -112,22 +112,18 @@ export class ImageEventComponent implements OnInit {
    
    this.event.image = image.url;
 
-   this.eventService.setEvent(this.event);
+  
+   console.log(this.event);
 
-   this.router.navigate(['event/info']);
-
-
-    this.eventService.updateEvent( this.event)
+   this.eventService.updateEvent( this.event)
     .subscribe((event:AppEvent) => { 
-     
-       if (event._id){
-         
-          this.router.navigate(['event/info']);
-        }
 
+      this.eventService.setEvent(event);
+
+      this.router.navigate(['event/info']);
+        
       },error=>{
-
-        this.router.navigate(['event/info']);
+        console.log(error);
         this.error = 'Server Error'; 
       });
   }
