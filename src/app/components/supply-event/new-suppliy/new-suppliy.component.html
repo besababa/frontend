@@ -1,0 +1,33 @@
+
+<event-header [event_id]="event.id"></event-header>
+
+<form class="new-supply-form row" [formGroup]='formGroup' (ngSubmit)='addSupply()' #form="ngForm">
+    
+  <mat-form-field class="new-supply-full-width col-md-3 col-sm-12">
+    <input matInput placeholder="שם" formControlName="title">
+      
+      <mat-error *ngIf="title.hasError('required')">
+        שם זה שדה <strong>חובה</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="new-supply-full-width col-md-3 col-sm-12">
+    <input matInput placeholder="כמות" formControlName="amount" >
+    
+    <mat-error *ngIf="amount.hasError('required')">
+        כמות זה שדה <strong>חובה</strong>
+    </mat-error>
+  </mat-form-field>
+
+  
+  <button mat-button  class="col-md-1 col-sm-12 add-new-supply-btn" >
+    <i class="fa fa-plus"></i>
+  </button>
+     
+  </form>
+
+  <div *ngIf="errorDuplicate" class="row">
+    <div class="col-md-12">
+      <mat-error >{{errorDuplicate.title}} כבר קיים ברשימה ניתן לשנות כמות ע"י לחיצה על הציוד</mat-error>
+    </div>
+  </div>

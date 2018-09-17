@@ -3,7 +3,7 @@ import { EventsService, AppEvent, AppImage } from '../../services/events.service
 import {NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NotFoundError } from '../../common/not-found-error';
-import { BadINput } from '../../common/bad-input';
+import { BadInput } from '../../common/bad-input';
 import { AppError } from '../../common/app-error';
 
 @Component({
@@ -63,7 +63,7 @@ export class ImageEventComponent implements OnInit {
 
       }else{
 
-        this.images = this.tempImages;
+       this.images = this.tempImages;
       }
 
     })
@@ -92,7 +92,7 @@ export class ImageEventComponent implements OnInit {
 
          this.error= 'Event not found'
         
-        }else if(error instanceof BadINput){
+        }else if(error instanceof BadInput){
  
           this.error = 'The image must be of the type jpeg/png and max size of 5Mb';
         

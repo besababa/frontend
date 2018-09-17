@@ -8,13 +8,12 @@
 
 <div class="row">
   
-    <ngb-carousel id="event-image-caroesel noselect" class="center" #myCarousel="ngbCarousel" >
-
+    <ngb-carousel id="event-image-caroesel noselect" class="center event-image-caroesel-wrapper" #myCarousel="ngbCarousel" >
+        
         <ng-template class="center" ngbSlide *ngFor="let image of images; let itemId = index"  [id]="itemId" style="width: 300px; height: 300px;">
             <img class="event-image-carousel noselect" [src]="image.url" alt="{{image.alt_image}}" (click)="fileInput.click()">  
         </ng-template>
-        
-        
+          
     </ngb-carousel>
     <input class="file-input-image" type="file" #fileInput (change)="uploadImage($event)">
     

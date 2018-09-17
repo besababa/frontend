@@ -1,0 +1,13 @@
+.mat-form-field{
+    text-align: right
+ }
+ 
+ .new-supply-form{
+     position: relative;
+     padding-top:30px 
+ }
+ 
+ .add-new-supply-btn{
+     font-size: 17px;
+     margin: 10px;
+ }

@@ -1,18 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap-grid';
-@import '~bootstrap/dist/css/bootstrap.min.css';
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
-$action-btn-background: #f7b336;
-$action-btn-color: #434343;
-
-
-
 .action-btn{
-  background: $action-btn-background;
-  color: $action-btn-color;
+  background: #f7b336;
+  color: #434343;
 }
 html {
     font-family: sans-serif;

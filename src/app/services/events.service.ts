@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { DataService } from './data.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -23,6 +23,14 @@ export class EventsService extends DataService{
   constructor( http : HttpClient, router:Router){ 
     
     super(environment.api_url+'/events',http,router);
+  }
+
+
+  getEventsUser(){
+
+    return this.http.get(this.url+"/user")
+    .catch(this.handelError);
+
   }
   setEvent(event){
     this.event = event
@@ -60,6 +68,7 @@ export class EventsService extends DataService{
 
   getNotifications(event_id){
 
+    console.log(event_id)
     return this.http.get(this.url+'/'+event_id+'/notifications')
       .catch(this.handelError);
   }
@@ -94,11 +103,12 @@ export class EventsService extends DataService{
       .catch(this.handelError);
   }
 
-  getEventSupplys<AppEventSupply>(id){
-    return this.http.get(this.url+'/supplys/'+id)
+  getEventSupplies(event_id){
+
+    console.log(this.url+"/"+event_id+"/supply")
+    return this.http.get(this.url+"/"+event_id+"/supply")
       .catch(this.handelError);
   }
-
   getEventId(){
   
     return (this.event)? this.event.id:null;

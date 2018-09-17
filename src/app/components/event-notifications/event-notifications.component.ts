@@ -15,6 +15,7 @@ export class EventNotificationsComponent implements OnInit {
 
   ngOnInit() {
 
+  
     this.eventService.getNotifications(this.event_id)
     .subscribe(result=>{
 

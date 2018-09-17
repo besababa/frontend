@@ -51,7 +51,10 @@ import { MainEventComponent } from './components/main-event/main-event.component
 import { ReadMoreComponent } from './components/long-text/long-text.component';
 import { EventHeaderComponent } from './components/event-header/event-header.component';
 import { EventNotificationsComponent } from './components/event-notifications/event-notifications.component';
-
+import { SupplyEventComponent } from './components/supply-event/supply-event.component';
+import { EventComponent } from './components/event/event.component';
+import { NewSuppliyComponent } from './components/supply-event/new-suppliy/new-suppliy.component';
+import { EditSupplyComponent } from './components/supply-event/edit-supply/edit-supply.component';
 
 
 const appRoutes:Routes = [
@@ -60,6 +63,11 @@ const appRoutes:Routes = [
     path:'',
     component:HomeComponent,
    
+  },
+
+  {
+    path:'user',
+    component:HomeComponent
   },
   {
     path:'event',
@@ -82,14 +90,27 @@ const appRoutes:Routes = [
       },
       {
         path:':event_id',
-        component:MainEventComponent,
+        children:[
+     
+          { 
+            path:'supply',
+            component:SupplyEventComponent,
+           
+          },
+          { 
+            path:'main',
+            component:MainEventComponent,
+          
+          },
+          
+
+        ]
        
       },
+    
     ]
   },  
   
-
- 
   {
     path:'login',
     component:LoginComponent,
@@ -130,6 +151,10 @@ const appRoutes:Routes = [
     ReadMoreComponent,
     EventHeaderComponent,
     EventNotificationsComponent,
+    SupplyEventComponent,
+    EventComponent,
+    NewSuppliyComponent,
+    EditSupplyComponent,
   ],
   imports: [
     BrowserModule,

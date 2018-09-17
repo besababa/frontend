@@ -1,40 +1,9 @@
 
-<event-header></event-header>
+<event-header [event_id]="event.id"></event-header>
 
+<app-event class="event-wrapper" [event]="event"></app-event>
 
-<div class="row">
-
-    <div class="col-12 col-md-6">
-
-        <div class="row">
-
-            <div class="col-8 title-event">
-                <div class="event-title">{{event.title}} </div>
-            </div>
-        
-            <div class="col-4 date-event text-right">
-                <span class="event-start-date">{{event.start_date}}</span>
-                <span class="event-end-date" *ngIf="event.end_date"> - {{event.end_date}}</span>
-            </div>
-    
-            <div class="col-12">
-                <img class="event-image" [src]="event.image" [alt]="event.title">
-            </div>
-        </div>
-
-    </div>
-    
-    <div class="col-12 col-md-6 description-wrapper">
-
-        <read-more>
-            {{event.description}}
-        </read-more>
-       
-    </div>
-
-</div>
-
-
+<event-notifications [event_id]="event.id" ></event-notifications>
 
 
 

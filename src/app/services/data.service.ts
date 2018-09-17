@@ -4,7 +4,7 @@ import 'rxjs/add/operator/catch';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { AppError } from '../common/app-error';
-import { BadINput } from '../common/bad-input';
+import { BadInput } from '../common/bad-input';
 import { NotFoundError } from '../common/not-found-error';
 import { Router } from '@angular/router';
 
@@ -44,12 +44,12 @@ export class DataService {
   }
 
   public handelError(response: Response){
-
+console.log(response);
     if(response.status==404)
       return Observable.throw(new NotFoundError)
 
     if(response.status ==400)
-      return Observable.throw(new BadINput(response['message']));
+      return Observable.throw(new BadInput(response['message']));
 
     return Observable.throw(new AppError(response['message']));
 

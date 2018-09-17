@@ -38,3 +38,7 @@ img.event-image-carousel{
     left: 45px;
     user-select: none;
 }
+.event-image-caroesel-wrapper{
+    width: 300px;
+    height: 300px;
+}

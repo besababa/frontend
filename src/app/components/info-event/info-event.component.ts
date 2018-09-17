@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService, AppEvent } from '../../services/events.service';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
@@ -62,7 +62,8 @@ export class InfoEventComponent implements OnInit {
   error:string;
   constructor(
     public eventService:EventsService,
-    private router: Router 
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -99,9 +100,9 @@ export class InfoEventComponent implements OnInit {
     .subscribe((event:AppEvent) => { 
       console.log(event)
       
-      this.eventService.setEvent(this.event);
+      this.eventService.setEvent(event);
 
-      this.router.navigate(['event/'+ event.id]);
+      this.router.navigate(['/event',event.id]);
         
  
       },error=>{

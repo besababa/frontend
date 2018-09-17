@@ -1,13 +1,8 @@
 <div class="row event-header-wrapper">
-    <div   class="col-2 pull-left user-img-wrapper" routerLink="/user/{{authService.currentUser._id}}">
-       
-      <img class="user-avatar pull-left"  src="assets/images/user-avatar.png">
-  
-    </div>
+ 
   <div class="col-2 event-manu-icon">
     <i class="fa fa-comment"></i>
   </div>
-  
  
   <div class="col-2 event-manu-icon">
     <i class="fa fa-user-plus"></i> 
@@ -17,9 +12,19 @@
       <i class="fa fa-image"></i>
   </div>
  
-  <div class="col-1"></div>
-  <div class="col-1"></div>
-    <div class="col-1 event-manu-icon">
-        <i class="fa fa-cog"></i>
-      </div>
+  <div class="col-2" 
+  [routerLink]="['/event',event_id,'supply']"
+
+  >
+   
+        <i class="fas fa-umbrella-beach"></i>  
+    
+  </div>
+
+  <div class="col-2 event-manu-icon" [routerLink]="['/event',event_id,'main']">
+   
+        <i class="fa fa-cog" ></i>
+
+    
+  </div>
 </div>

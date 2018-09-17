@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router , NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth.service' 
+import { AppEvent, EventsService } from '../../services/events.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,11 @@ import { AuthService } from '../../services/auth.service'
 export class HeaderComponent{
 
   public avatar:string="assets/images/avatar.jpeg";
-  
-  constructor( public auth: AuthService) {}
+  public event:AppEvent;
+  constructor( public auth: AuthService,eventService:EventsService) {
+
+    this.event = eventService.getEvent();
+  }
 
  
 
