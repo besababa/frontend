@@ -14,7 +14,7 @@ export class EventHeaderComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
-    
+   
   }
 
 }

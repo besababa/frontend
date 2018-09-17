@@ -9,56 +9,25 @@ import { BadInput } from '../../common/bad-input';
   selector: 'app-event',
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css'],
-  inputs:['event','editing']
+  
 })
 export class EventComponent implements OnInit {
 
-  @Input() event:AppEvent
-  @Input() editing:boolean
-  public eventImageError:string;
-
   constructor(public eventService: EventsService,private activatedRoute: ActivatedRoute) {}
+  public event_id:number;
+  ngOnInit() {
 
-  ngOnInit() {}
-
-  get isEditing(){
-    return this.editing===false
-  }
-  uploadImage(event){
-
-    if(this.editing===false) return false;
-
-    let image = event.target.files[0];
-   
-    this.eventImageError = null;
-
-    if((image.type=='image/jpeg' || image.type=='image/png')){
+    this.activatedRoute.paramMap.subscribe(params=>{
      
-      let formData:FormData = new FormData();
-      formData.append('eventImage', image, image.name);
+      this.event_id = + params.get('event_id');
+      this.eventService.event_id = this.event_id;
   
-      this.eventService.uploadEventImage(formData).subscribe((result:AppImage)=>{
-
-        this.event.image = result.url;
-       
-      },(error:AppError)=>{
-       
-       if(error instanceof NotFoundError){
-
-         this.eventImageError= 'Event not found'
-        
-        }else if(error instanceof BadInput){
- 
-          this.eventImageError = 'The image must be of the type jpeg/png and max size of 5Mb';
-        
-        }else throw error
-       
-
-      })
-    }else{
-      this.eventImageError = "You can upload jpeg or png only"
-    }
+    })
+    
   }
+  
+
+  
 
 
 }

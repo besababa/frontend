@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 export class EventsService extends DataService{
 
   private event:AppEvent;
- 
+  public event_id;
   constructor( http : HttpClient, router:Router){ 
     
     super(environment.api_url+'/events',http,router);

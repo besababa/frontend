@@ -90,17 +90,17 @@ const appRoutes:Routes = [
       },
       {
         path:':event_id',
+        component:EventComponent,
         children:[
-     
           { 
             path:'supply',
             component:SupplyEventComponent,
-           
+            outlet: 'event'
           },
           { 
             path:'main',
             component:MainEventComponent,
-          
+            outlet: 'event'
           },
           
 

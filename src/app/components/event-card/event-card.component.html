@@ -1,12 +1,27 @@
-<mat-card>
-    <mat-card-header>
-    <mat-card-title class="text-center">
-      {{event.title}}
-    </mat-card-title>
-    <mat-card-subtitle class="mra">{{event.description}}</mat-card-subtitle>
-    </mat-card-header>
-      <img mat-card-image [src]="event.image" alt="event card photo" class="mrs">
-    <mat-card-content class="text-center">
-      <p>{{event.description}}</p>
-    </mat-card-content>
-</mat-card>
+
+<div class="row">
+
+  <div class="col-12 title-event">
+      <div class="event-title">{{event.title}} </div>
+  </div>
+
+  <div class="col-12 date-event">
+      <span class="event-start-date">{{event.start_date}}</span>
+      <span class="event-end-date" *ngIf="event.end_date"> - {{event.end_date}}</span>
+  </div>
+
+  <div class="col-12">
+          <img *ngIf="isEditing" class="event-image" [src]="event.image" [alt]="event.title" (click)="fileInput.click()">
+
+      <div  *ngIf="!isEditing">
+          <img class="event-image" [src]="event.image" [alt]="event.title" (click)="fileInput.click()">
+          <input class="file-input-image" type="file" #fileInput (change)="uploadImage($event)">
+      </div>
+      
+  </div>
+  <read-more class="col-12 event-description">
+      {{event.description}}
+  </read-more>
+</div>
+
+  

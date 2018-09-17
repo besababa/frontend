@@ -1,12 +1,12 @@
 
 <div class="row">
-    <app-event 
+    <event-card 
     class="col-md-3 col-xs-12 event-card-wrapper"
     *ngFor="let event of events"
     [event]="event" 
     [editing]="false"
-    [routerLink]="['event',event.id,'main']"
-    ></app-event>
+    [routerLink]="[ 'event' , event.id , { outlets: { 'event': ['supply'] } } ]"
+    ></event-card>
 </div>
 
    

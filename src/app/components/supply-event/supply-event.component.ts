@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventsService } from '../../services/events.service';
+import { EventsService, AppEvent } from '../../services/events.service';
 
 
 @Component({
@@ -15,25 +15,22 @@ export class SupplyEventComponent implements OnInit {
   supplies;
 
   
-  constructor(private eventsService :EventsService,private activatedRoute: ActivatedRoute) {
+  constructor(public eventsService :EventsService,private activatedRoute: ActivatedRoute) {
    
   }
   
   ngOnInit() {
    
-    this.activatedRoute.paramMap.subscribe(parmas => {
-      if(parmas.has('event_id')){
-       
-        this.eventsService.getEventSupplies( parmas.get('event_id'))
-        .subscribe(supplies=>{
-          console.log('event-supplys' ,supplies)
-          this.supplies = supplies;
-        })
-        
+    let event_id = this.eventsService.event_id;
+    this.eventsService.getEventSupplies(event_id)
+      .subscribe(supplies=>{
+    
+        this.supplies = supplies;
 
-        console.log(parmas.get('event_id'))
-      }
-    });
+      }, error=>{
+
+        console.log(error)
+      })
 
    
     
