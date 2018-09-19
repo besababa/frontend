@@ -20,6 +20,7 @@ export class EventsService extends DataService{
 
   private event:AppEvent;
   public event_id;
+  public header_title:string;
   constructor( http : HttpClient, router:Router){ 
     
     super(environment.api_url+'/events',http,router);
@@ -34,6 +35,20 @@ export class EventsService extends DataService{
   getEventsUser(){
 
     return this.http.get(this.url+"/user")
+    .catch(this.handelError);
+
+  }
+
+
+  getEventApps(event_id){
+
+    return this.http.get(this.url+"/"+event_id+"/event-apps")
+    .catch(this.handelError);
+
+  }
+
+  getApps(){
+    return this.http.get(this.url+"/apps")
     .catch(this.handelError);
 
   }

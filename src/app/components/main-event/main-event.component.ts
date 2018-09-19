@@ -25,6 +25,8 @@ export class MainEventComponent implements OnInit {
       
       let event_id = params.get('event_id');
       
+      this.eventService.header_title = 'Event';
+
       this.eventService.getOne(event_id)
       .subscribe((event:AppEvent)=>{
     

@@ -13,13 +13,15 @@ export class EventHeaderComponent implements OnInit {
   public event_id:number;
   public event:AppEvent;
   constructor(
-    private eventService: EventsService,
+    public eventService: EventsService,
     public auth: AuthService,
     ) {}
 
   ngOnInit() {
    
     this.event_id = this.eventService.event_id;
+
+   
     this.eventService.getOne(this.event_id)
       .subscribe((event:AppEvent)=>{
     

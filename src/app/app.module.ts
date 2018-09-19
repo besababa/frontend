@@ -56,6 +56,9 @@ import { EventComponent } from './components/event/event.component';
 import { NewSuppliyComponent } from './components/supply-event/new-suppliy/new-suppliy.component';
 import { EditSupplyComponent } from './components/supply-event/edit-supply/edit-supply.component';
 import { EventAppsComponent } from './components/event-apps/event-apps.component';
+import { NewAppComponent } from './components/new-app/new-app.component';
+import { DisplayEventAppsComponent } from './components/display-event-apps/display-event-apps.component';
+import { AppLinkComponent } from './components/app-link/app-link.component';
 
 
 const appRoutes:Routes = [
@@ -95,14 +98,28 @@ const appRoutes:Routes = [
         children:[
           { 
             path:'apps',
-            component:EventAppsComponent,
+            children:[
+              {
+                path:'new',
+                component:NewAppComponent,
+              },
+            
+              {
+                path:'',
+                component:EventAppsComponent,
+               
+              },
+
+
+            ],
+           
             
           },
-          { 
+          {
             path:'home',
             component:MainEventComponent,
-            
-          },
+          }
+        
           
 
         ]
@@ -157,6 +174,9 @@ const appRoutes:Routes = [
     NewSuppliyComponent,
     EditSupplyComponent,
     EventAppsComponent,
+    NewAppComponent,
+    DisplayEventAppsComponent,
+    AppLinkComponent,
   ],
   imports: [
     BrowserModule,
