@@ -68,7 +68,7 @@ export class InfoEventComponent implements OnInit {
 
   ngOnInit() {
       this.event = this.eventService.getEvent();
-      console.log(this.event);
+     
       this.descriptionPlaceholder = this.placheholder;
   }
 
@@ -93,16 +93,13 @@ export class InfoEventComponent implements OnInit {
 
     this.event.description =(this.descriptionControl.value)? this.descriptionControl.value:this.placheholder;
     this.event.start_date = this.date.value;
-
-    console.log(event);
     
     this.eventService.updateEvent(this.event)
     .subscribe((event:AppEvent) => { 
-      console.log(event)
       
       this.eventService.setEvent(event);
 
-      this.router.navigate(['/event',event.id]);
+      this.router.navigate(['/event',event.id,'home']);
         
  
       },error=>{

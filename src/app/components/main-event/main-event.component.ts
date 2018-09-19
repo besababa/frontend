@@ -31,7 +31,6 @@ export class MainEventComponent implements OnInit {
       .subscribe((event:AppEvent)=>{
     
         this.event = event;
-        console.log(event)
 
       }, error=>{
 

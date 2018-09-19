@@ -18,7 +18,7 @@ export class LoginComponent {
   ) { }
 
   signIn(credentials) {
-    console.log(credentials)
+
     this.authService.login(credentials)
     .subscribe(result => { 
       

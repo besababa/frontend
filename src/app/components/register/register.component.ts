@@ -21,7 +21,6 @@ export class RegisterComponent {
    
     this.authService.register(credentials)
      /* .subscribe(user_id => { 
-        console.log(user_id)
         user_id=null;
         if (user_id){
           

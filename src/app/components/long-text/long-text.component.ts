@@ -12,7 +12,6 @@ export class ReadMoreComponent {
 
   taggleShow(){
     this.show= !this.show;
-    console.log(this.show)
   }
 
 }

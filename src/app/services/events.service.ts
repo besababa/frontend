@@ -75,7 +75,6 @@ export class EventsService extends DataService{
 
     return this.http.post(this.url,resource)
     .pipe( map( result => {
-      console.log(result);
       if(result && result['token']){
         localStorage.setItem('token',result['token'])
       }
@@ -88,7 +87,6 @@ export class EventsService extends DataService{
 
   getNotifications(event_id){
 
-    console.log(event_id)
     return this.http.get(this.url+'/'+event_id+'/notifications')
       .catch(this.handelError);
   }
@@ -125,7 +123,6 @@ export class EventsService extends DataService{
 
   getEventSupplies(event_id){
 
-    console.log(this.url+"/"+event_id+"/supply")
     return this.http.get(this.url+"/"+event_id+"/supply")
       .catch(this.handelError);
   }

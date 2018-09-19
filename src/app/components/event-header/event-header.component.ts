@@ -26,7 +26,7 @@ export class EventHeaderComponent implements OnInit {
       .subscribe((event:AppEvent)=>{
     
         this.event = event;
-        console.log(event)
+       
 
       }, error=>{
 

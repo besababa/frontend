@@ -112,8 +112,6 @@ export class ImageEventComponent implements OnInit {
    
    this.event.image = image.url;
 
-  
-   console.log(this.event);
 
    this.eventService.updateEvent( this.event)
     .subscribe((event:AppEvent) => { 

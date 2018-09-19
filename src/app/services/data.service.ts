@@ -44,7 +44,6 @@ export class DataService {
   }
 
   public handelError(response: Response){
-console.log(response);
     if(response.status==404)
       return Observable.throw(new NotFoundError)
 

@@ -19,7 +19,7 @@ export class EventNotificationsComponent implements OnInit {
     this.eventService.getNotifications(this.event_id)
     .subscribe(result=>{
 
-      console.log(result)
+      
 
     }, error=>{
       
