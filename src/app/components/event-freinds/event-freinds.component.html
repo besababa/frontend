@@ -1,0 +1,49 @@
+
+<new-friend [errorDuplicate]="duplicateFriend" (add)="addFriend($event)"></new-friend>
+
+
+<mat-table *ngIf="friends" #table [dataSource]="dataSource" matSort aria-label="Elements">
+    
+  <!-- Id Column -->
+  <ng-container matColumnDef="num">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>מספר</mat-header-cell>
+    <mat-cell *matCellDef="let friend">{{ friends.indexOf(friend)+1 }}</mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>שם</mat-header-cell>
+    <mat-cell *matCellDef="let friend">{{friend.name}}</mat-cell>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>איימיל</mat-header-cell>
+    <mat-cell *matCellDef="let friend">{{friend.email}}</mat-cell>
+  </ng-container>
+
+  <!-- Phone Column -->
+  <ng-container matColumnDef="phone">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>סלולר</mat-header-cell>
+    <mat-cell *matCellDef="let friend">{{friend.phone}}</mat-cell>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>סטטוס</mat-header-cell>
+    <mat-cell *matCellDef="let friend"><active-status [status]="friend.status"></active-status></mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  
+  <mat-row *matRowDef="let friend; columns: displayedColumns;" (click)="editFriend(friend)" class="friendRow"></mat-row>
+</mat-table>
+
+<mat-paginator *ngIf="friends" #paginator
+  [length]="dataSource.friends.length"
+  [pageIndex]="0"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 50, 100, 250]">
+</mat-paginator>

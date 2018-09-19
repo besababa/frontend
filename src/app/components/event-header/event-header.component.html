@@ -5,7 +5,7 @@
       <li class="nav-item col-2">
           <img class="event-image" [src]="event.image" [alt]="event.title">
       </li>
-      <li class="nav-item col-1 col-md-2"></li>
+      
 
       <li class="nav-item col-2 col-md-1">
           <a class="nav-link" mat-button routerLink="/"> <mat-icon>home</mat-icon></a>
@@ -17,8 +17,10 @@
       <li class="nav-item col-2 col-md-1">
           <a class="nav-link" routerLinkActive="active" mat-button routerLink="/event/{{event_id}}/apps"> <mat-icon>apps</mat-icon></a>
       </li>
+      <li class="nav-item col-2 col-md-1">
+         <a class="nav-link" routerLinkActive="active" mat-button routerLink="/event/{{event_id}}/friends"> <mat-icon>people</mat-icon></a>
+     </li>
 
-      <li class="nav-item col-1 col-md-3"></li>
      
       <li class="nav-item dropdown col-2 col-md-1">
 

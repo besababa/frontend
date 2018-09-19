@@ -59,6 +59,11 @@ import { EventAppsComponent } from './components/event-apps/event-apps.component
 import { NewAppComponent } from './components/new-app/new-app.component';
 import { DisplayEventAppsComponent } from './components/display-event-apps/display-event-apps.component';
 import { AppLinkComponent } from './components/app-link/app-link.component';
+import { EventFreindsComponent } from './components/event-freinds/event-freinds.component';
+import { EditFriendComponent } from './components/event-freinds/edit-friend/edit-friends.component';
+import { NewFriendComponent } from './components/event-freinds/new-friend/new-friend.component';
+import { ActiveStatusComponent } from './components/active-status/active-status.component';
+import { FriendRolesComponent } from './components/event-freinds/friend-roles/friend-roles.component';
 
 
 const appRoutes:Routes = [
@@ -118,6 +123,10 @@ const appRoutes:Routes = [
           {
             path:'home',
             component:MainEventComponent,
+          },
+          {
+            path:'friends',
+            component:EventFreindsComponent,
           }
         
           
@@ -177,6 +186,11 @@ const appRoutes:Routes = [
     NewAppComponent,
     DisplayEventAppsComponent,
     AppLinkComponent,
+    EventFreindsComponent,
+    EditFriendComponent,
+    NewFriendComponent,
+    ActiveStatusComponent,
+    FriendRolesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService, AppEvent } from '../../services/events.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-events',
@@ -12,11 +13,16 @@ export class EventsComponent implements OnInit {
   
   public events:any[]; 
   private user_id;
-  constructor(private eventService: EventsService) {}
+  constructor(private eventService: EventsService, private authService:AuthService) {}
 
   ngOnInit(){
-    this.eventService.getEventsUser()
+
+    if(this.authService.getToken()){
+
+      this.eventService.getEventsUser()
       .subscribe((events:AppEvent[]) => this.events = events)
+    }
+   
     
   }
  

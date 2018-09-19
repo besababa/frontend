@@ -1,0 +1,13 @@
+.mat-standard-chip {
+    display: inline;
+
+}
+.status-icon{
+    margin: 0 auto;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-green{
+
+    background-color: #28a745;
+    color: #fff;
+}

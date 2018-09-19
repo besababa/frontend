@@ -1,0 +1,13 @@
+.friend-name-header{
+
+    text-align: center;
+    padding: 0 0 30px 0;
+}
+
+.mat-form-field{
+    font-size: 2em
+}
+
+div.is-friend-admin-wrapper > mat-slide-toggle{
+    margin-top: 20px;
+}

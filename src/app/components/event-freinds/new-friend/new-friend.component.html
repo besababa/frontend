@@ -1,0 +1,31 @@
+<div class="row">
+
+  <mat-form-field class="center col-10">
+   
+      <input type="text" placeholder="Email" aria-label="Number" matInput formControlName="email" [matAutocomplete]="auto" (click)="addFriend()">
+      <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let userFriend of userFriends" [value]="email">
+          {{userFriend.email}}
+          </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+        Invalid Email
+      </mat-error>
+      <mat-error *ngIf="email.hasError('required')">
+        Email is required!
+    </mat-error>
+
+  </mat-form-field>
+
+  <button mat-button  class="col-2" (click)="addFriend()">
+    <i class="fa fa-plus"></i>
+  </button>
+
+  
+  <div *ngIf="errorDuplicate" class="row">
+    <div class="col-md-12">
+      <mat-error >כבר קיים חבר עם אימייל {{errorDuplicate.email}}</mat-error>
+    </div>
+  </div>
+</div>
+ 

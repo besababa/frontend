@@ -42,7 +42,7 @@ export class EventsService extends DataService{
 
   getEventApps(event_id){
 
-    return this.http.get(this.url+"/"+event_id+"/event-apps")
+    return this.http.get(this.url+"/"+event_id+"/apps")
     .catch(this.handelError);
 
   }
@@ -115,9 +115,9 @@ export class EventsService extends DataService{
 
   }
 
-  getEventFriends<AppEventFriend>(id){
+  getEventFriends<AppEventFriend>(event_id){
 
-    return this.http.get(this.url+'/friends/'+id)
+    return this.http.get(this.url+"/"+event_id+"/friends")
       .catch(this.handelError);
   }
 
