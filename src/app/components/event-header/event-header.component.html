@@ -1,31 +1,55 @@
-<div class="row event-header-wrapper">
+<div class="header">
  
-  <div class="col-2 event-manu-icon">
-    <i class="fa fa-comment"></i>
-  </div>
- 
-  <div class="col-2 event-manu-icon">
-    <i class="fa fa-user-plus"></i> 
-  </div>
 
-  <div class="col-2 event-manu-icon">
-      <i class="fa fa-image"></i>
-  </div>
- 
-  <div class="col-2" 
-  [routerLink]="[ { outlets: { 'event': ['supply'] } } ]"
-  >
+    <ul class="nav nav-pills event-header-nav row">
+      <li class="nav-item col-2">
+          <img class="event-image" [src]="event.image" [alt]="event.title" (click)="fileInput.click()">
+      </li>
+      <li class="nav-item col-1 col-md-2"></li>
 
-    <i class="fas fa-umbrella-beach"></i>  
-    
-  </div>
+      <li class="nav-item col-2 col-md-1">
+          <a class="nav-link" mat-button routerLink="/"> <mat-icon>home</mat-icon></a>
+      </li>
+
+      <li class="nav-item col-2 col-md-1">
+          <a class="nav-link" routerLinkActive="active" mat-button routerLink="/event/{{event_id}}/home"> <mat-icon>event_note</mat-icon></a>
+      </li>
+      <li class="nav-item col-2 col-md-1">
+          <a class="nav-link" routerLinkActive="active" mat-button routerLink="/event/{{event_id}}/apps"> <mat-icon>apps</mat-icon></a>
+      </li>
+
+      <li class="nav-item col-1 col-md-3"></li>
+     
+      <li class="nav-item dropdown col-2 col-md-1">
+
+          <mat-icon mat-icon-button [matMenuTriggerFor]="menu">menu</mat-icon>
+        
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>menu</mat-icon>
+            </button>
+            <button mat-menu-item routerLink="/">
+                <mat-icon>home</mat-icon>
+              </button>
+              
+            <button *ngIf="auth.isLoggedIn()" mat-menu-item routerLink="/user/{{auth.currentUser._id}}">
+              <mat-icon>person</mat-icon>
+            </button>
+
+            <button *ngIf="auth.isLoggedIn()" mat-menu-item (click)="auth.logout()">
+              <mat-icon>lock</mat-icon>
+            </button>
+
+            <button mat-menu-item *ngIf="!auth.isLoggedIn()" routerLink="/login">         
+                <mat-icon>lock_open</mat-icon>
+              </button>
+            
+          </mat-menu>
+      </li>
+
+
+
+    </ul>
+
   
-
-  <div class="col-2 event-manu-icon" 
-  [routerLink]="[ { outlets: { 'event': ['main'] } } ]"
-  >
-   
-    <i class="fa fa-cog" ></i>
-
-  </div>
 </div>

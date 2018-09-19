@@ -6,15 +6,32 @@ import { EventsService, AppEvent } from '../../services/events.service';
   selector: 'event-header',
   templateUrl: './event-header.component.html',
   styleUrls: ['./event-header.component.css'],
-  inputs:['event_id']
+ 
 })
 export class EventHeaderComponent implements OnInit {
 
-  @Input() event_id:number;
-  constructor(public authService: AuthService) {}
+  public event_id:number;
+  public event:AppEvent;
+  constructor(
+    private eventService: EventsService,
+    public auth: AuthService,
+    ) {}
 
   ngOnInit() {
    
+    this.event_id = this.eventService.event_id;
+    this.eventService.getOne(this.event_id)
+      .subscribe((event:AppEvent)=>{
+    
+        this.event = event;
+        console.log(event)
+
+      }, error=>{
+
+        console.log(error)
+      })
   }
+
+
 
 }

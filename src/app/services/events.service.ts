@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 import { environment } from './../../environments/environment';
 import { DataService } from './data.service';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Injectable({
@@ -25,6 +25,11 @@ export class EventsService extends DataService{
     super(environment.api_url+'/events',http,router);
   }
 
+  isEvent(){
+    
+   return (this.event_id>0)
+
+  }
 
   getEventsUser(){
 

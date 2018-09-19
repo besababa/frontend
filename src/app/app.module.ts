@@ -55,6 +55,7 @@ import { SupplyEventComponent } from './components/supply-event/supply-event.com
 import { EventComponent } from './components/event/event.component';
 import { NewSuppliyComponent } from './components/supply-event/new-suppliy/new-suppliy.component';
 import { EditSupplyComponent } from './components/supply-event/edit-supply/edit-supply.component';
+import { EventAppsComponent } from './components/event-apps/event-apps.component';
 
 
 const appRoutes:Routes = [
@@ -90,17 +91,17 @@ const appRoutes:Routes = [
       },
       {
         path:':event_id',
-        component:EventComponent,
+    
         children:[
           { 
-            path:'supply',
-            component:SupplyEventComponent,
-            outlet: 'event'
+            path:'apps',
+            component:EventAppsComponent,
+            
           },
           { 
-            path:'main',
+            path:'home',
             component:MainEventComponent,
-            outlet: 'event'
+            
           },
           
 
@@ -155,6 +156,7 @@ const appRoutes:Routes = [
     EventComponent,
     NewSuppliyComponent,
     EditSupplyComponent,
+    EventAppsComponent,
   ],
   imports: [
     BrowserModule,

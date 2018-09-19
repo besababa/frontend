@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RoutingState } from './helpers/RoutingState';
+import { EventsService } from './services/events.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { RoutingState } from './helpers/RoutingState';
 })
 export class AppComponent {
 
-  constructor(public RoutingState:RoutingState){}
+  constructor(public RoutingState:RoutingState,public eventService:EventsService){}
   
 
 }

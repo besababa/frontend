@@ -19,9 +19,13 @@ export class MainEventComponent implements OnInit {
 
   ngOnInit() {
 
-    let event_id = this.eventService.event_id;
+    
 
-    this.eventService.getOne(event_id)
+    this.activatedRoute.paramMap.subscribe(params=>{
+      
+      let event_id = params.get('event_id');
+      
+      this.eventService.getOne(event_id)
       .subscribe((event:AppEvent)=>{
     
         this.event = event;
@@ -31,6 +35,9 @@ export class MainEventComponent implements OnInit {
 
         console.log(error)
       })
+    
+
+    })
     
   }
 
