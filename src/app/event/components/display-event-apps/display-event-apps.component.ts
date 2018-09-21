@@ -15,7 +15,6 @@ export class DisplayEventAppsComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.eventService.getEventApps(this.event_id) 
     .subscribe((event_apps) => this.event_apps = event_apps);
   

@@ -8,7 +8,7 @@ import { EventsService } from 'shared/services/events.service';
 })
 export class NewAppComponent implements OnInit {
 
-  public apps;
+  public web_apps;
   constructor(private eventService: EventsService) { }
 
   ngOnInit() {
@@ -16,7 +16,10 @@ export class NewAppComponent implements OnInit {
     this.eventService.header_title = 'Create new app';
 
     this.eventService.getApps()
-      .subscribe((apps) => this.apps = apps);
+      .subscribe((apps) =>{ 
+        
+        this.web_apps = apps;
+      });
 
   }
 

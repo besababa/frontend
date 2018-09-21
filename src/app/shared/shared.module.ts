@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatAutocompleteModule,
+  MatChipsModule,
   MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
@@ -11,10 +13,13 @@ import {
   MatPaginatorModule,
   MatSlideToggleModule,
   MatTableModule,
-  MatChipsModule,
+  MatGridListModule,
 } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppErrorHandler } from 'shared/common/app-error-handler';
 import { ActionBtnComponent } from 'shared/components/action-btn/action-btn.component';
 import { ActiveStatusComponent } from 'shared/components/active-status/active-status.component';
@@ -32,6 +37,10 @@ const sharedRoutes:Routes = [];
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    AngularFontAwesomeModule,
+    HttpClientModule,
+    BrowserModule,
+    NgbModule.forRoot(),
     RouterModule.forChild(sharedRoutes),
 
     MatInputModule,
@@ -44,6 +53,7 @@ const sharedRoutes:Routes = [];
     MatFormFieldModule,
     MatAutocompleteModule,
     MatSlideToggleModule,
+    MatGridListModule,
 
   ],
   declarations: [
@@ -55,6 +65,10 @@ const sharedRoutes:Routes = [];
 
   ],
   exports: [
+    AngularFontAwesomeModule,
+    HttpClientModule,
+    BrowserModule,
+    NgbModule.forRoot().ngModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
@@ -74,6 +88,7 @@ const sharedRoutes:Routes = [];
     MatSlideToggleModule,
     MatInputModule,
     MatChipsModule,
+    MatGridListModule,
 
   ],
   providers: [

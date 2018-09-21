@@ -1,10 +1,9 @@
-<div class="app-wrapper">
 
-    <div class="app-title">
-      {{app.title}}
-    </div>
 
-    <div class="app-image">
-      <img class="app-image" [src]="app.image">
-    </div>
-</div>
+
+<mat-grid-list cols="3" rowHeight="2:2">
+    <mat-grid-tile *ngFor="let app of apps" class="app-link-wrapper">
+        <span>{{app.title}}</span>
+    </mat-grid-tile>
+  </mat-grid-list>
+

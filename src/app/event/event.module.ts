@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from 'core/components/home/home.component';
+import { FriendRolesComponent } from 'event/components/event-freinds/friend-roles/friend-roles.component';
 import { EventsComponent } from 'shared/components/events/events.component';
 import { SharedModule } from 'shared/shared.module';
 
@@ -21,7 +22,6 @@ import { MainEventComponent } from './components/main-event/main-event.component
 import { NewAppComponent } from './components/new-app/new-app.component';
 import { NewEventBtnComponent } from './components/new-event-btn/new-event-btn.component';
 import { TitleEventComponent } from './components/title-event/title-event.component';
-import { FriendRolesComponent } from 'event/components/event-freinds/friend-roles/friend-roles.component';
 
 
 
