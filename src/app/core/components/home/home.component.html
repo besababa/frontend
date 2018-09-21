@@ -1,0 +1,25 @@
+
+
+<div class="row">
+    
+    <page-title class="center" text="It's All About Sababa Time With Friends!"></page-title>
+ </div>
+
+<div class="row">
+    <action-btn class="go-next-btn center" text="CREATE AN EVENT"  routerLink="/event/title"> ></action-btn>
+</div>
+
+
+<div class="row">
+    <div class="col-12 home-event-explanation" >
+        <p class="event-explanation-title" >How does it work?</p>
+        <ol>
+            <li>Choose Template</li>
+            <li>Add Your Info</li>
+            <li>Invite Friends</li>
+            <li>Have Fun</li>
+        </ol>
+    </div>
+</div>
+
+<display-events *ngIf="auth.getToken()"></display-events>

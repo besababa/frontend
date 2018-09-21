@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RoutingState } from './helpers/RoutingState';
-import { EventsService } from './services/events.service';
+import { RoutingState } from './core/helpers/RoutingState';
+import { EventsService } from 'shared/services/events.service';
 
 
 @Component({

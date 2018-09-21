@@ -1,0 +1,16 @@
+
+<div class="row" *ngIf="this.authService.getToken()">
+   
+    <event-card 
+    class="col-md-3 col-xs-12 event-card-wrapper"
+    *ngFor="let event of events"
+    [event]="event" 
+    [editing]="false"
+    [routerLink]="[ 'event' , event.id, 'home' ]"
+    ></event-card>
+    
+</div>
+
+   
+
+

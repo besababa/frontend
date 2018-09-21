@@ -1,0 +1,11 @@
+
+<div class="row">
+    <p class="col-12 text-center header-title" *ngIf="eventService.header_title">{{ eventService.header_title}}</p>    
+</div>
+<event-card class="event-wrapper" *ngIf="event" [event]="event"></event-card>
+
+<event-notifications [event_id]="event_id" ></event-notifications>
+
+
+
+

@@ -21,6 +21,11 @@ html {
  
  }
 
+ .header-title{
+
+  font-size: 1.5em;
+      
+}
  .error-msg{
    color: red;
    text-align: center;
