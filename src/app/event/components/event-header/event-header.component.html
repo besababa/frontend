@@ -5,7 +5,9 @@
         <li class="nav-item col-2" routerLink="/event/{{event_id}}/home">
             <img class="event-image" *ngIf="event" [src]="eventImage" [alt]="event.title">
         </li>
-        <li class="nav-item col-1 col-md-1"></li>
+        <li class="nav-item col-2 col-md-1">
+            <a class="nav-link" mat-button routerLink="/"> <mat-icon>home</mat-icon></a>
+        </li>
         <li class="nav-item col-2 col-md-1">
             <a class="nav-link" routerLinkActive="active" mat-button routerLink="/event/{{event_id}}/home"> <mat-icon>event_note</mat-icon></a>
         </li>
@@ -15,7 +17,6 @@
         <li class="nav-item col-2 col-md-1">
             <a class="nav-link" routerLinkActive="active" mat-button routerLink="/event/{{event_id}}/friends"> <mat-icon>people</mat-icon></a>
         </li>
-        <li class="nav-item col-1"></li>
 
         <li class="nav-item dropdown col-2 col-md-1">
           <menu-header></menu-header>

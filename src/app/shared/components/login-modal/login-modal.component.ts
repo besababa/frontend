@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgbActiveModal,  NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal,  NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import {
     AuthService,
     FacebookLoginProvider,
@@ -16,8 +16,11 @@ import { BsAuthService } from 'shared/services/bs.auth.service';
   // add NgbModalConfig and NgbModal to the component providers
   providers: [NgbActiveModal, NgbModal]
 })
+
 export class LoginModalComponent {
   loading:boolean;
+  private modalRef: NgbModalRef;
+  private closeResult;
   message:string="Your entrain to the dream"
   constructor(
      private auth: BsAuthService,
@@ -29,7 +32,8 @@ export class LoginModalComponent {
   }
 
   open(content) {
-    this.modalService.open(content);
+    this.modalRef = this.modalService.open(content);
+    
   }
 
 
@@ -47,11 +51,9 @@ export class LoginModalComponent {
       (userData) => {
 
         this.auth.socialSignIn(userData).subscribe(result=>{
-
-          this.active.close('p');
-          this.auth.setUser(result)
-
-          
+          console.log(this.modalRef)
+          this.modalRef.close();
+          this.auth.setUser(result);
 
         })
        
