@@ -1,4 +1,4 @@
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 
@@ -13,7 +13,7 @@ export class LoginComponent {
   constructor(
     private router: Router, 
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: BsAuthService
 
   ) { }
 

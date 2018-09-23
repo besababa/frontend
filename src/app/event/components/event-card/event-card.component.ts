@@ -4,6 +4,7 @@ import { AppEvent, EventsService, AppImage } from 'shared/services/events.servic
 import { AppError } from 'shared/common/app-error';
 import { NotFoundError } from 'shared/common/not-found-error';
 import { BadInput } from 'shared/common/bad-input';
+import { EventHeaderComponent } from 'event/components/event-header/event-header.component';
 
 @Component({
   selector: 'event-card',
@@ -19,7 +20,7 @@ export class EventCardComponent implements OnInit {
 
   constructor(public eventService: EventsService,private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() { }
+  ngOnInit() {  }
 
   get isEditing(){
     return this.editing===false
@@ -37,10 +38,12 @@ export class EventCardComponent implements OnInit {
       let formData:FormData = new FormData();
       formData.append('eventImage', image, image.name);
   
-      this.eventService.uploadEventImage(formData).subscribe((result:AppImage)=>{
+      
+      this.eventService.uploadEventImage(this.event.id,formData).subscribe((result:AppImage)=>{
 
         this.event.image = result.url;
        
+        this.eventService.eventImage = this.event.image; 
       },(error:AppError)=>{
        
        if(error instanceof NotFoundError){

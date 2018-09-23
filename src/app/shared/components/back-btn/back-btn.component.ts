@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutingState } from '../../../core/helpers/RoutingState';
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 
 @Component({
   selector: 'back-btn',
@@ -9,7 +9,7 @@ import { AuthService } from 'shared/services/auth.service';
 })
 export class BackBtnComponent implements OnInit {
 
-  constructor(public RoutingState:RoutingState, public auth: AuthService, ) { }
+  constructor(public RoutingState:RoutingState, public auth: BsAuthService, ) { }
 
   ngOnInit() {
   }

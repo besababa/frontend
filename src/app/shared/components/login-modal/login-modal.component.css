@@ -1,0 +1,27 @@
+
+.modal-title{
+  opacity: 0.8;
+}
+.login-modal-message{
+
+  text-align: center;
+  font-size: 1.5em;
+  opacity: 0.8;
+}
+
+.login-btn > button{
+  margin: 10px auto;
+  width: 200px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.google{
+  background: #d93025;
+  color: #fff;
+}
+
+.facebook{
+  background: #4267b2;
+  color: #fff;
+}

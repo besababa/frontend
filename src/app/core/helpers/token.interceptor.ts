@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 import { Observable } from 'rxjs';
 import { EventsService } from 'shared/services/events.service';
 
@@ -14,7 +14,7 @@ import { EventsService } from 'shared/services/events.service';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(public auth: AuthService,public eventService: EventsService) {
+  constructor(public auth: BsAuthService,public eventService: EventsService) {
      
   }
   

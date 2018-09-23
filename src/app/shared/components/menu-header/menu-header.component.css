@@ -1,0 +1,9 @@
+.user-image{
+    width: 40px;
+    border-radius: 100px;
+}
+
+.user-name{
+    font-size: 1em;
+    margin-left: 10px;
+}

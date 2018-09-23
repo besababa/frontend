@@ -8,7 +8,7 @@ import { EventsService } from 'shared/services/events.service';
 })
 export class EventAppsComponent implements OnInit {
 
-  constructor(private eventService: EventsService) { }
+  constructor(public eventService: EventsService) { }
   public event_id
   ngOnInit() {
 

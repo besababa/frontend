@@ -9,7 +9,7 @@ import { EventsService } from 'shared/services/events.service';
 export class NewAppComponent implements OnInit {
 
   public web_apps;
-  constructor(private eventService: EventsService) { }
+  constructor(public eventService: EventsService) { }
 
   ngOnInit() {
 

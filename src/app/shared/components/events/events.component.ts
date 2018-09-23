@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService, AppEvent } from 'shared/services/events.service';
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 
 @Component({
   selector: 'display-events',
@@ -13,7 +13,7 @@ export class EventsComponent implements OnInit {
   
   public events:any[]; 
   private user_id;
-  constructor(private eventService: EventsService, private authService:AuthService) {}
+  constructor(private eventService: EventsService, public authService:BsAuthService) {}
 
   ngOnInit(){
 
@@ -21,8 +21,7 @@ export class EventsComponent implements OnInit {
 
       this.eventService.getEventsUser()
       .subscribe((events:AppEvent[]) => {
-
-        console.log(event)
+        console.log(events);
         this.events = events
       })
     }

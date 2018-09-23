@@ -7,32 +7,59 @@ import {
   MatChipsModule,
   MatDatepickerModule,
   MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatMenuModule,
   MatPaginatorModule,
   MatSlideToggleModule,
   MatTableModule,
-  MatGridListModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule } from 'angular5-social-login';
 import { AppErrorHandler } from 'shared/common/app-error-handler';
 import { ActionBtnComponent } from 'shared/components/action-btn/action-btn.component';
 import { ActiveStatusComponent } from 'shared/components/active-status/active-status.component';
 import { BackBtnComponent } from 'shared/components/back-btn/back-btn.component';
+import { LoginModalComponent } from 'shared/components/login-modal/login-modal.component';
 import { ReadMoreComponent } from 'shared/components/long-text/long-text.component';
 import { PageTitleComponent } from 'shared/components/page-title/page-title.component';
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 import { EventsService } from 'shared/services/events.service';
+import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
+
+
+// Configs 
+export function getAuthServiceConfigs() {
+
+  
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("263898594140228")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("103691219863-1je80gmgsbc29b1bbs8956pkbnvqu2d1.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
+
+
+
 
 const sharedRoutes:Routes = [];
 
 @NgModule({
   imports: [
+    SocialLoginModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
@@ -62,6 +89,9 @@ const sharedRoutes:Routes = [];
     ReadMoreComponent,
     PageTitleComponent,
     ActiveStatusComponent,
+    LoginModalComponent,
+    MenuHeaderComponent,
+
 
   ],
   exports: [
@@ -89,12 +119,17 @@ const sharedRoutes:Routes = [];
     MatInputModule,
     MatChipsModule,
     MatGridListModule,
+    LoginModalComponent,
+    MenuHeaderComponent,
 
   ],
   providers: [
-    AuthService,
+    BsAuthService,
     EventsService,
     {provide:ErrorHandler, useClass:AppErrorHandler},
+
+    {provide: AuthServiceConfig,useFactory: getAuthServiceConfigs},
   ]
 })
 export class SharedModule { }
+

@@ -2,6 +2,7 @@
 
   <app-header class="header" *ngIf="!eventService.isEvent()"></app-header>
 
+  
   <event-header class="header" *ngIf="eventService.isEvent()"></event-header>
 
   <router-outlet (activate)="RoutingState.loadRouting()"></router-outlet>

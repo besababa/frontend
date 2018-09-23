@@ -12,7 +12,7 @@
    
 
 }
-.nav-item > a ,.nav-item > mat-icon{
+.nav-item > a ,.nav-item > mat-icon,.nav-item > menu-header{
     top: 20px;
     position: absolute;
 }

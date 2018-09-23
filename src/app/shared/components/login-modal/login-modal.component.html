@@ -1,0 +1,27 @@
+<ng-template class="login-modal-template" #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">LOGIN</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="login-modal-message">
+        {{message}}
+      </p>
+      <div class="login-btn row">
+          <button type="button" class="btn btn-primary facebook not-now-btn" (click)="socialSignIn('facebook')">Facebook</button>
+      </div>
+      <div class="login-btn row">
+          <button type="button" class="btn btn-danger google not-now-btn" (click)="socialSignIn('google')">Google</button>
+
+      </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary pull-right" (click)="c('Save click')">Maybe Later</button>
+    </div>
+</ng-template>
+  
+
+<button class="mat-menu-item" (click)="open(content)"><mat-icon>lock_open</mat-icon></button>

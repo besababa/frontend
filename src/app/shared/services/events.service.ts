@@ -17,7 +17,7 @@ import { DataService } from './data.service';
 
 
 export class EventsService extends DataService{
-
+  public eventImage;
   private event:AppEvent;
   public event_id;
   public header_title:string="Event";
@@ -91,9 +91,9 @@ export class EventsService extends DataService{
       .catch(this.handelError);
   }
 
-  uploadEventImage(file){
+  uploadEventImage(event_id,file){
     
-    return this.http.post(this.url+'/upload/event-image',file)
+    return this.http.post(this.url+'/'+event_id+'/upload/event-image',file)
     .pipe( map( result => {
       result['alt_image'] = 'new event image';
       return result;

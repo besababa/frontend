@@ -38,6 +38,7 @@ import { EventModule } from './event/event.module';
       multi: true,
     }
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

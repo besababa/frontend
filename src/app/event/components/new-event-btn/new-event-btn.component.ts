@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 
 @Component({
   selector: 'new-event-btn',
@@ -8,7 +8,7 @@ import { AuthService } from 'shared/services/auth.service';
 })
 export class NewEventBtnComponent implements OnInit {
 
-  constructor(public auth:AuthService) { }
+  constructor(public auth:BsAuthService) { }
 
   ngOnInit() {
   }

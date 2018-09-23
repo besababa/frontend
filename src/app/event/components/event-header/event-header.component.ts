@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'shared/services/auth.service';
+import { BsAuthService } from 'shared/services/bs.auth.service';
 import { AppEvent, EventsService } from 'shared/services/events.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class EventHeaderComponent implements OnInit {
   public event:AppEvent;
   constructor(
     public eventService: EventsService,
-    public auth: AuthService,
+    public auth: BsAuthService,
     ) {}
 
   ngOnInit() {
@@ -29,6 +29,10 @@ export class EventHeaderComponent implements OnInit {
 
         console.log(error)
       })
+  }
+  get eventImage(){
+
+    return (this.eventService.eventImage)?this.eventService.eventImage:this.event.image;
   }
 
 
