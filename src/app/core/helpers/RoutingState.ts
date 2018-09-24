@@ -8,7 +8,7 @@ import { EventsService } from "shared/services/events.service";
 export class RoutingState {
   private history = [];
   private add:boolean = true;
-  private lastUrl;
+  public lastUrl;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,

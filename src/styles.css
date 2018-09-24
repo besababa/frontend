@@ -2,6 +2,8 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+@import '~@ngx-share/button/styles/share-buttons.css';
+@import '~@ngx-share/button/styles/themes/default/default-theme.css';
 
 .action-btn{
   background: #f7b336;

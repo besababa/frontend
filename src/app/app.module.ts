@@ -6,9 +6,6 @@ import { TokenInterceptor } from 'core/helpers/token.interceptor';
 import { SharedModule } from 'shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { EditSupplyComponent } from './apps/components/supply-event/edit-supply/edit-supply.component';
-import { NewSuppliyComponent } from './apps/components/supply-event/new-suppliy/new-suppliy.component';
-import { SupplyEventComponent } from './apps/components/supply-event/supply-event.component';
 import { CoreModule } from './core/core.module';
 import { EventModule } from './event/event.module';
 
@@ -27,6 +24,7 @@ import { EventModule } from './event/event.module';
   declarations: [
 
     AppComponent,
+
 
   ],
   providers: [

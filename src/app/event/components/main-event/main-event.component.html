@@ -2,6 +2,13 @@
 <div class="row">
     <p class="col-12 text-center header-title" *ngIf="eventService.header_title">{{ eventService.header_title}}</p>    
 </div>
+
+<div class="row">
+
+    <share-event-modal class="col-1 offset-5" [event]="event"></share-event-modal>
+
+</div>
+
 <event-card class="event-wrapper" *ngIf="event" [event]="event"></event-card>
 
 

@@ -19,6 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShareButtonsModule } from '@ngx-share/buttons';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, SocialLoginModule } from 'angular5-social-login';
 import { AppErrorHandler } from 'shared/common/app-error-handler';
@@ -28,8 +29,10 @@ import { BackBtnComponent } from 'shared/components/back-btn/back-btn.component'
 import { LoginModalComponent } from 'shared/components/login-modal/login-modal.component';
 import { ReadMoreComponent } from 'shared/components/long-text/long-text.component';
 import { PageTitleComponent } from 'shared/components/page-title/page-title.component';
+import { ShareEventModalComponent } from 'shared/components/share-event-modal/share-event-modal.component';
 import { BsAuthService } from 'shared/services/bs.auth.service';
 import { EventsService } from 'shared/services/events.service';
+
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 
 
@@ -69,6 +72,7 @@ const sharedRoutes:Routes = [];
     BrowserModule,
     NgbModule.forRoot(),
     RouterModule.forChild(sharedRoutes),
+    ShareButtonsModule.forRoot(),
 
     MatInputModule,
     MatIconModule,
@@ -91,6 +95,8 @@ const sharedRoutes:Routes = [];
     ActiveStatusComponent,
     LoginModalComponent,
     MenuHeaderComponent,
+    ShareEventModalComponent,
+
 
 
   ],
@@ -99,6 +105,7 @@ const sharedRoutes:Routes = [];
     HttpClientModule,
     BrowserModule,
     NgbModule.forRoot().ngModule,
+    ShareButtonsModule.forRoot().ngModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
@@ -121,6 +128,8 @@ const sharedRoutes:Routes = [];
     MatGridListModule,
     LoginModalComponent,
     MenuHeaderComponent,
+    ShareEventModalComponent,
+
 
   ],
   providers: [
