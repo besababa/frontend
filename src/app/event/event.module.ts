@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from 'core/components/home/home.component';
 import { FriendRolesComponent } from 'event/components/event-freinds/friend-roles/friend-roles.component';
 import { EventsComponent } from 'shared/components/events/events.component';
-import { SharedModule } from 'shared/shared.module';
+import { AppSharedModule } from 'shared/shared.module';
 
 import { AppLinkComponent } from './components/app-link/app-link.component';
 import { DisplayEventAppsComponent } from './components/display-event-apps/display-event-apps.component';
@@ -83,7 +83,7 @@ const eventRoutes:Routes = [
 
 @NgModule({
   imports: [
-    SharedModule,
+    AppSharedModule,
     CommonModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(eventRoutes),    

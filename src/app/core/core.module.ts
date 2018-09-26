@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EventHeaderComponent } from 'event/components/event-header/event-header.component';
-import { SharedModule } from 'shared/shared.module';
+import { AppSharedModule } from 'shared/shared.module';
 
 import { FoterComponent } from './components/foter/foter.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -30,7 +30,7 @@ const coreRoutes:Routes = [
 
 @NgModule({
   imports: [
-    SharedModule,
+    AppSharedModule,
     RouterModule.forRoot(coreRoutes),
   ],
   declarations: [

@@ -1,48 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import {NgbActiveModal,  NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import {
-    AuthService,
-    FacebookLoginProvider,
-    GoogleLoginProvider
-} from 'angular5-social-login';
-import { AppEvent } from 'shared/services/events.service';
-import { Location } from '@angular/common';
-import { environment } from '../../../../environments/environment';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { AppEvent, EventsService } from 'shared/services/events.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'share-event-modal',
   templateUrl: './share-event-modal.component.html',
   styleUrls: ['./share-event-modal.component.css'],
   providers: [NgbActiveModal, NgbModal],
-  inputs:['event']
-
+  inputs: ['event_id']
+  
 })
 export class ShareEventModalComponent implements OnInit{
 
-  loading:boolean;
+  @Input() event_id;
+  public loading:boolean=false;
   private modalRef: NgbModalRef;
   private closeResult;
-  event:AppEvent;
-  url:string;
-  title:string;
-  message:string="Share your event with friends"
+  public event:AppEvent;
+  public shareUrl:string;
+  public message:string="Share your event with friends";
 
-  constructor(
-     private active: NgbActiveModal,
-     private modalService: NgbModal,
-     private location : Location,
-     
-
-  ) {
-  
-  }
+  constructor( private modalService: NgbModal, private eventService:EventsService ) { }
 
   ngOnInit(){
-
-    this.url = environment.api_url+this.location.path();
-    this.title = "Please come to my event";
+    this.shareUrl = environment.base_url+"/event/"+this.event_id+"/home";
+    
+    this.eventService.getOne(this.event_id)
+      .subscribe((event:AppEvent)=>{
+        
+        this.event = event;
+        
+        this.loading = true;
+        console.log(this.event)
+      }, error=>{
+        console.log(error)
+      })
+    
+    
   }
   open(content) {
+    if(!this.loading)return false
     this.modalRef = this.modalService.open(content);
     
   }

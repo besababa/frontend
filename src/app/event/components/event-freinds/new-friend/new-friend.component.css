@@ -1,13 +1,22 @@
-.mat-form-field{
-   text-align: right
-}
+
 
 .new-friend-form{
     position: relative;
-    padding-top:30px 
+    padding-top:30px;
 }
 
 .add-new-friend-btn{
-    font-size: 17px;
+    top: 10px;
+    position: absolute;
+    margin: 0 auto;
+
+
+}
+.mat-form-field{
+    width: 100%;
+    max-width: 270px;
+}
+
+.center{
     margin: 0 auto;
 }

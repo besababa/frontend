@@ -83,7 +83,8 @@ export class ImageEventComponent implements OnInit {
       let formData:FormData = new FormData();
       formData.append('eventImage', image, image.name);
   
-      this.eventService.uploadEventImage(this.event.id,formData).subscribe((result:AppImage)=>{
+      this.eventService.uploadEventTempImage(formData)
+      .subscribe((result:AppImage)=>{
 
         this.images.splice(parseInt(this.myCarousel.activeId),0,result)
        

@@ -1,8 +1,11 @@
 
-<new-friend [errorDuplicate]="duplicateFriend" (add)="addFriend($event)"></new-friend>
+<div class="row">
+  <div class="col-12">
+      <share-event-modal [event_id]="event_id"></share-event-modal>
+  </div>
+</div>
 
-
-<mat-table *ngIf="friends" #table [dataSource]="dataSource" matSort aria-label="Elements">
+<mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
     
   <!-- Id Column -->
   <ng-container matColumnDef="num">
@@ -22,16 +25,11 @@
     <mat-cell *matCellDef="let friend">{{friend.email}}</mat-cell>
   </ng-container>
 
-  <!-- Phone Column -->
-  <ng-container matColumnDef="phone">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>סלולר</mat-header-cell>
-    <mat-cell *matCellDef="let friend">{{friend.phone}}</mat-cell>
-  </ng-container>
 
   <!-- Status Column -->
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef mat-sort-header>סטטוס</mat-header-cell>
-    <mat-cell *matCellDef="let friend"><active-status [status]="friend.status"></active-status></mat-cell>
+    <mat-cell *matCellDef="let friend">{{friend.status}}</mat-cell>
   </ng-container>
 
 

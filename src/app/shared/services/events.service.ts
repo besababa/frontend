@@ -91,9 +91,17 @@ export class EventsService extends DataService{
       .catch(this.handelError);
   }
 
+  uploadEventTempImage(file){
+
+    return this.http.post(this.url+'/upload/event-image',file)
+    .pipe( map( result => {
+      result['alt_image'] = 'new event image';
+      return result;
+    })).catch(this.handelError);
+  }
   uploadEventImage(event_id,file){
     
-    return this.http.post(this.url+'/'+event_id+'/upload/event-image',file)
+    return this.http.post(this.url+'/update/event-image/'+event_id,file)
     .pipe( map( result => {
       result['alt_image'] = 'new event image';
       return result;
@@ -116,7 +124,6 @@ export class EventsService extends DataService{
   }
 
   getEventFriends<AppEventFriend>(event_id){
-
     return this.http.get(this.url+"/"+event_id+"/friends")
       .catch(this.handelError);
   }

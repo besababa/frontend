@@ -1,65 +1,49 @@
 import { Component, OnInit, ViewChild , Output, EventEmitter } from '@angular/core';
-import { MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog, MatTableDataSource } from '@angular/material';
 import { FriendsDataSource } from './friends-datasource';
 import { EditFriendComponent } from './edit-friend/edit-friends.component';
-import { AppEventFriend, EventsService } from 'shared/services/events.service';
+import { AppEventFriend, EventsService, AppEvent } from 'shared/services/events.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'event-friends',
   templateUrl: './event-freinds.component.html',
-  styleUrls: ['./event-freinds.component.css'],
-  inputs: ['event_id'],
+  styleUrls: ['./event-freinds.component.css']
+  
  
 })
 
 export class EventFreindsComponent implements OnInit {
 
   duplicateFriend;
-  friends:AppEventFriend[]
-  event_id;
-
+  public event_id;
+  public shareUrl;
+  public event:AppEvent;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Output() addNewFriend = new EventEmitter();
  
-  constructor(public dialog: MatDialog,private eventService:EventsService) {}
+  constructor(
+    public dialog: MatDialog,
+    private eventService:EventsService,
+    private activatedRoute: ActivatedRoute
+    ) {}
 
-
-
-  dataSource: FriendsDataSource;
+  dataSource: FriendsDataSource;;
  
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['num', 'name','email','phone','status'];
+  displayedColumns = ['num', 'name','email','status'];
 
   ngOnInit() {
     
-    if(this.event_id){
-      this.eventService.getEventFriends( this.event_id )
-      .subscribe(response=>{
-        console.log('event-friends' ,response)
-        this.friends = response['friends'];
-        this.dataSource = new FriendsDataSource(this.paginator, this.sort, this.friends);
-      })
-    }
-   
-  }
-
-  addFriend(friend){
-  
-    let check = this.friends.find(function(element) {
-      return element.email === friend.email;
-    })
-
-    console.log(typeof check)
-    if(typeof check != 'undefined'){
-      
-      this.duplicateFriend = friend;
-
-      return false;
-    }
-    this.friends.splice(0,0,friend);
-
-    this.dataSource = new FriendsDataSource(this.paginator, this.sort, this.friends);;
+    this.activatedRoute.paramMap.subscribe( params => {
+    
+      this.event_id = params.get('event_id');
+    
+      this.eventService.getEventFriends(this.event_id )
+      .subscribe((friends:AppEventFriend[])=>{
+        this.dataSource = new FriendsDataSource(this.paginator, this.sort, friends);
+      });
+    });
    
   }
 

@@ -34,6 +34,7 @@ import { BsAuthService } from 'shared/services/bs.auth.service';
 import { EventsService } from 'shared/services/events.service';
 
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
+import { ShareModule } from '@ngx-share/core';
 
 
 // Configs 
@@ -44,11 +45,11 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("263898594140228")
+          provider: new FacebookLoginProvider("2282478195322006")
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("103691219863-1je80gmgsbc29b1bbs8956pkbnvqu2d1.apps.googleusercontent.com")
+          provider: new GoogleLoginProvider("621124466176-chboqbbgv4f8814qn8o0dg0glbj8hqb2.apps.googleusercontent.com")
         },
       ]
   );
@@ -73,6 +74,7 @@ const sharedRoutes:Routes = [];
     NgbModule.forRoot(),
     RouterModule.forChild(sharedRoutes),
     ShareButtonsModule.forRoot(),
+    ShareModule.forRoot(),
 
     MatInputModule,
     MatIconModule,
@@ -106,6 +108,8 @@ const sharedRoutes:Routes = [];
     BrowserModule,
     NgbModule.forRoot().ngModule,
     ShareButtonsModule.forRoot().ngModule,
+    ShareModule.forRoot().ngModule,
+
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
@@ -140,5 +144,5 @@ const sharedRoutes:Routes = [];
     {provide: AuthServiceConfig,useFactory: getAuthServiceConfigs},
   ]
 })
-export class SharedModule { }
+export class AppSharedModule { }
 

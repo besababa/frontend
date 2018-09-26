@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppEvent, EventsService } from 'shared/services/events.service';
-
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'main-event',
@@ -12,7 +12,7 @@ export class MainEventComponent implements OnInit {
 
   public event_id:number;
   public event:AppEvent;
- 
+  public url;
   constructor(public eventService: EventsService,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,7 +22,8 @@ export class MainEventComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params=>{
       
       this.event_id = + params.get('event_id');
-
+      this.url = environment.base_url+"/event/"+this.event_id+"/home";
+     
       this.eventService.getOne(this.event_id)
       .subscribe((event:AppEvent)=>{
            

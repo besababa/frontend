@@ -15,6 +15,7 @@ export class FriendsDataSource extends DataSource<AppEventFriend> {
   
   constructor( private paginator: MatPaginator, private sort: MatSort ,public friends) {
     super();
+
   }
   
   /**

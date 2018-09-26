@@ -1,3 +1,6 @@
+
+
+
 <ng-template class="login-modal-template" #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">SHARE</h4>
@@ -9,23 +12,29 @@
     <p class="login-modal-message">
       {{message}}
     </p>
-    <share-buttons [theme]="'circles-dark'"
-    [include]="['facebook','twitter','google','whatsapp','messenger','sms','email','copy','print']"
-    [show]="9"
-    [size]="4"
-    [url]="url"
-    [title]="event.title"
-    [description]="event.description"
-    [image]="event.image"
-  
-    [autoSetMeta]="false"
-   ></share-buttons>
+    <div class="row">
+        <share-buttons [theme]="'default'"
+        [include]="['facebook','twitter','google','whatsapp','messenger','sms','email','copy','print']"
+        [show]="9"
+        [showText]="true"
+        [size]="4"
+        [url]="'http://localhost:4200/event/8/home'"
+        [title]="'You invited to the best event'"
+        [description]="'bla bla bla'"
+        [image]="'https://besababa.ams3.digitaloceanspaces.com/temp/XgpUEo0IqyohNrfgjB8Ssvhms6An4zRdvHgOtH9X.png'"
+        [tags]="'best event'"
+       ></share-buttons>
+    </div>
+    
 
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-secondary pull-right" (click)="c('Save click')">Close</button>
+      <button type="button" class="btn btn-secondary pull-right" (click)="c('close')">Close</button>
   </div>
 </ng-template>
 
-
-<button class="mat-menu-item" (click)="open(content)"><mat-icon>share</mat-icon></button>
+<div class="row">
+  <div class="col-2 offset-4">
+      <button class=" btn btn-primary" (click)="open(content)">Invite friends</button>
+  </div>
+</div>

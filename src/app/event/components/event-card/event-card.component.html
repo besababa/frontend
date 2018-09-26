@@ -11,7 +11,7 @@
   </div>
 
   <div class="col-12">
-          <img *ngIf="isEditing" class="event-image" [src]="event.image" [alt]="event.title">
+        <img *ngIf="isEditing" class="event-image" [src]="event.image" [alt]="event.title">
 
       <div  *ngIf="!isEditing">
           <img class="event-image" [src]="event.image" [alt]="event.title" (click)="fileInput.click()">

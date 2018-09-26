@@ -14,42 +14,31 @@ export class NewFriendComponent implements OnInit {
   @ViewChild('form') newFrienForm;
   @Output() add = new EventEmitter();
   @Input() public errorDuplicate: any;
-  public userFriends;
+  public userFriends=['gonen@buyme.co.il','shlomi@buyme.co.il'];
   formGroup = new FormGroup({
-    name : new FormControl('', [
-      Validators.required
-    
-    ]),
+  
     email : new FormControl('', [
       Validators.required,
       Validators.email
-    ]),
-    phone : new FormControl('', [
-      Validators.required
-    ]),
+    ])
 
   })
   constructor(public eventService : EventsService) {}
 
   ngOnInit() {
 
-
-
   }
-
-  get name(): any { return this.formGroup.get('name'); }
   get email(): any { return this.formGroup.get('email'); }
-  get phone(): any { return this.formGroup.get('phone'); }
   
-  
-
- 
   addFriend(){
 
+    console.log(this.formGroup);
     if(this.formGroup.invalid) return false;
 
     let friend = this.formGroup.value;
 
+    console.log(friend);
+    console.log(999)
     friend.status = 0;
     friend.roles = 0
     
