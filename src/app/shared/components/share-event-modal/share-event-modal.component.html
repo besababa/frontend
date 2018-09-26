@@ -15,14 +15,13 @@
     <div class="row">
         <share-buttons [theme]="'default'"
         [include]="['facebook','twitter','google','whatsapp','messenger','sms','email','copy','print']"
-        [show]="9"
-        [showText]="true"
-        [size]="4"
-        [url]="'http://localhost:4200/event/8/home'"
-        [title]="'You invited to the best event'"
-        [description]="'bla bla bla'"
-        [image]="'https://besababa.ams3.digitaloceanspaces.com/temp/XgpUEo0IqyohNrfgjB8Ssvhms6An4zRdvHgOtH9X.png'"
-        [tags]="'best event'"
+        [show]="7"
+        [size]="5"
+        [url]="shareUrl"
+        [title]="event.title"
+        [description]="event.description"
+        [image]="event.image"
+        [autoSetMeta]="false"
        ></share-buttons>
     </div>
     

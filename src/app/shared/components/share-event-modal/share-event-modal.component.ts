@@ -24,15 +24,13 @@ export class ShareEventModalComponent implements OnInit{
   constructor( private modalService: NgbModal, private eventService:EventsService ) { }
 
   ngOnInit(){
+    
     this.shareUrl = environment.base_url+"/event/"+this.event_id+"/home";
     
     this.eventService.getOne(this.event_id)
       .subscribe((event:AppEvent)=>{
-        
         this.event = event;
-        
         this.loading = true;
-        console.log(this.event)
       }, error=>{
         console.log(error)
       })

@@ -161,11 +161,9 @@ export interface AppEventFriend{
     id: number;
     name: string;
     email: string;
-    phone: string;
     status:number;
-    admin: boolean;
-    disabled:boolean;
-    color:string;
+    permission:number;
+   
   
 }
 

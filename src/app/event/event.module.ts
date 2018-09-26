@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from 'core/components/home/home.component';
-import { FriendRolesComponent } from 'event/components/event-freinds/friend-roles/friend-roles.component';
+import { FriendRolesComponent } from 'event/components/event-friends/friend-roles/friend-roles.component';
 import { EventsComponent } from 'shared/components/events/events.component';
 import { AppSharedModule } from 'shared/shared.module';
 
@@ -11,9 +11,10 @@ import { AppLinkComponent } from './components/app-link/app-link.component';
 import { DisplayEventAppsComponent } from './components/display-event-apps/display-event-apps.component';
 import { EventAppsComponent } from './components/event-apps/event-apps.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
-import { EditFriendComponent } from './components/event-freinds/edit-friend/edit-friends.component';
-import { EventFreindsComponent } from './components/event-freinds/event-freinds.component';
-import { NewFriendComponent } from './components/event-freinds/new-friend/new-friend.component';
+import { EditFriendComponent } from 'event/components/event-friends/edit-friend/edit-friends.component';
+import { EventFreindsComponent } from 'event/components/event-friends/event-freinds.component';
+import { FriendsTableComponent } from 'event/components/event-friends/friends-table/friends-table.component';
+
 import { EventNotificationsComponent } from './components/event-notifications/event-notifications.component';
 import { EventComponent } from './components/event/event.component';
 import { ImageEventComponent } from './components/image-event/image-event.component';
@@ -105,8 +106,8 @@ const eventRoutes:Routes = [
     NewEventBtnComponent,
     TitleEventComponent,
     EditFriendComponent,
-    NewFriendComponent,
     FriendRolesComponent,
+    FriendsTableComponent,
 
   ],
   exports: [
