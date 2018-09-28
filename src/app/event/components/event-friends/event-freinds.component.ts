@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AppEventFriend, EventsService } from 'shared/services/events.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EventFreindsComponent implements OnInit {
   
   event_id
-  constructor(private eventService: EventsService,private activatedRoute:ActivatedRoute ) {}
+  constructor(private activatedRoute:ActivatedRoute ) {}
 
   ngOnInit() {
     
@@ -21,10 +20,6 @@ export class EventFreindsComponent implements OnInit {
     
       this.event_id = params.get('event_id');
     
-      this.eventService.getEventFriends(this.event_id )
-      .subscribe((friends:AppEventFriend[])=>{
-          console.log(friends)
-      });
     });
    
   }

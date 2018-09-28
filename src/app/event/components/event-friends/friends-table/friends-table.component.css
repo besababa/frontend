@@ -1,0 +1,11 @@
+.friends-table{
+    width: 80%;
+    margin: 20px auto;
+}
+
+:host ::ng-deep .mat-paginator-container{
+
+    justify-content: flex-start;
+    left: 10%;
+    position: absolute;
+}

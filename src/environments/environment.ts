@@ -5,8 +5,9 @@
 export const environment = {
   production: false,
   api_url:"http://localhost:8000",
-  base_url:"http//localhost:4200"
-
+  base_url:"http//localhost:4200",
+  facebook_key : "2282478195322006",
+  google_key : "621124466176-chboqbbgv4f8814qn8o0dg0glbj8hqb2.apps.googleusercontent.com"
 };
 
 /*

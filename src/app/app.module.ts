@@ -8,7 +8,6 @@ import { AppSharedModule } from 'shared/shared.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { EventModule } from './event/event.module';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 
 @NgModule({
@@ -20,12 +19,7 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
     CoreModule,
     
     RouterModule.forRoot([]),
-    
-    MatTableModule,
-    
-    MatPaginatorModule,
-    
-    MatSortModule,
+  
     
   ],
   declarations: [

@@ -14,6 +14,7 @@ import {
   MatPaginatorModule,
   MatSlideToggleModule,
   MatTableModule,
+  MatSortModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +36,7 @@ import { EventsService } from 'shared/services/events.service';
 
 import { MenuHeaderComponent } from './components/menu-header/menu-header.component';
 import { ShareModule } from '@ngx-share/core';
+import { environment } from '../../environments/environment';
 
 
 // Configs 
@@ -45,11 +47,11 @@ export function getAuthServiceConfigs() {
       [
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("2282478195322006")
+          provider: new FacebookLoginProvider(environment.facebook_key)
         },
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("621124466176-chboqbbgv4f8814qn8o0dg0glbj8hqb2.apps.googleusercontent.com")
+          provider: new GoogleLoginProvider(environment.google_key)
         },
       ]
   );
@@ -87,6 +89,7 @@ const sharedRoutes:Routes = [];
     MatAutocompleteModule,
     MatSlideToggleModule,
     MatGridListModule,
+    MatSortModule,
 
   ],
   declarations: [
@@ -122,6 +125,7 @@ const sharedRoutes:Routes = [];
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
     MatMenuModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -133,8 +137,7 @@ const sharedRoutes:Routes = [];
     LoginModalComponent,
     MenuHeaderComponent,
     ShareEventModalComponent,
-
-
+  
   ],
   providers: [
     BsAuthService,
